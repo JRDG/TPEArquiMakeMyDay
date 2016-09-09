@@ -15,10 +15,10 @@ public class Historial_Usuario {
 	private double nivelFelicidad;
 	@Column(nullable = false)
 	private boolean privado;
+	@Column
 	private Date fecha_fin;
 	
 	public Historial_Usuario(Usuario usuario, Actividad actividad, double nivelFelicidad, boolean privado) {
-		super();
 		this.usuario = usuario;
 		this.actividad = actividad;
 		this.nivelFelicidad = nivelFelicidad;
