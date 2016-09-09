@@ -1,5 +1,5 @@
 package Entidades;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.*;
 
 @Entity
@@ -7,11 +7,11 @@ public class Historial_Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@Column(nullable = false)
 	@ManyToOne
+	@JoinColumn
 	private Usuario usuario;
-	@Column(nullable = false)
 	@ManyToOne
+	@JoinColumn
 	private Actividad_Realizada actividad;
 	@Column(nullable = false)
 	private double nivelFelicidad;
@@ -20,6 +20,10 @@ public class Historial_Usuario {
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha_fin;
+	
+	public Historial_Usuario() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public Historial_Usuario(Usuario usuario, Actividad_Realizada actividad, double nivelFelicidad, boolean privado) {
 		this.usuario = usuario;

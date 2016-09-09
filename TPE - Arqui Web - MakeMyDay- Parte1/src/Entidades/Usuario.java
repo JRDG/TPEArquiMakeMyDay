@@ -19,6 +19,10 @@ public class Usuario {
 	@Column(nullable = false)
 	private String password;
 	
+	public Usuario() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Usuario(String nombre, String apellido, String dNI, int edad, String password) {
 		this.nombre = nombre;
 		this.apellido = apellido;

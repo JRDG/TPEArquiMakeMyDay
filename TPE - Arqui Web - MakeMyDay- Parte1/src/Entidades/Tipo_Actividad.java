@@ -13,6 +13,10 @@ public class Tipo_Actividad {
 	@GeneratedValue(strategy=GenerationType.AUTO)	
 	private int idTipo;
 	
+	public Tipo_Actividad() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Tipo_Actividad(String nombre){
 		this.nombre=nombre;
 	}

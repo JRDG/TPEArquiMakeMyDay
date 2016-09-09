@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -21,9 +22,12 @@ public class Actividad {
 	private String nombre;
 	
 	@ManyToMany
-	@Column(nullable=false)
+	@JoinColumn
 	private ArrayList<Tipo_Actividad> ListadeTipo;
 
+	public Actividad() {
+		ListadeTipo = new ArrayList<Tipo_Actividad>();
+	}
 
 	public Actividad(String nombre, ArrayList<Tipo_Actividad> listadeTipo) {
 		this.nombre = nombre;
