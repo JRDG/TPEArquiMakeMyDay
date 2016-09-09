@@ -10,15 +10,16 @@ public class Historial_Usuario {
 	@Column(nullable = false)
 	private Usuario usuario;
 	@Column(nullable = false)
-	private Actividad actividad;
+	private Actividad_Realizada actividad;
 	@Column(nullable = false)
 	private double nivelFelicidad;
 	@Column(nullable = false)
 	private boolean privado;
 	@Column
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha_fin;
 	
-	public Historial_Usuario(Usuario usuario, Actividad actividad, double nivelFelicidad, boolean privado) {
+	public Historial_Usuario(Usuario usuario, Actividad_Realizada actividad, double nivelFelicidad, boolean privado) {
 		this.usuario = usuario;
 		this.actividad = actividad;
 		this.nivelFelicidad = nivelFelicidad;
@@ -33,7 +34,7 @@ public class Historial_Usuario {
 	public Usuario getUsuario() {
 		return usuario;
 	}
-	public Actividad getActividad() {
+	public Actividad_Realizada getActividad() {
 		return actividad;
 	}
 	public double getNivelFelicidad() {
