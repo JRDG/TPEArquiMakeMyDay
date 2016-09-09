@@ -3,15 +3,15 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	
-	<persistence-unit name="Practico2-JPA-ApacheDerby">
+	<persistence-unit name="TPE-MakeMyDay-JPA">
 		<description>Contexto de persistencia con Apache Derby, Hibernate y entidades JPA definidas mediante anotaciones</description>
 		
 <!-- 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<!-- <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider> -->
 		
-<!-- 		<class>Entidades.Jugador</class> -->
-<!-- 		<class>Entidades.Equipo</class> -->
+<!-- 		<class>com.tudai.practico2ejemplo.entidades.Jugador</class> -->
+<!-- 		<class>com.tudai.practico2ejemplo.entidades.Equipo</class> -->
 
 		<properties>
 			<!-- Propiedades de configuracion de JDBC para Apache Derby -->
@@ -29,33 +29,7 @@
 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
 			<!-- <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/> -->
 		</properties>
-	</persistence-unit> 
-
-	<!-- <persistence-unit name="Practico2-JPA-ApacheDerby"> -->
-	<!-- <description>Contexto de persistencia con Apache Derby</description> -->
-	<!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
-	<!-- <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider> -->
-	<!-- <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider> -->
-	<!-- <class>com.tudai.practico2ejemplo.entidades.Jugador</class> -->
-	<!-- <class>com.tudai.practico2ejemplo.entidades.Equipo</class> -->
-	<!-- <mapping-file>\META-INF\entidadesSinAnotaciones\jugador.xml</mapping-file> -->
-	<!-- <mapping-file>\META-INF\entidadesSinAnotaciones\equipo.xml</mapping-file> -->
-	<!-- <properties> -->
-	<!-- Propieadades de configuracion de JDBC para Apache Derby -->
-	<!-- <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" /> -->
-	<!-- <property name="javax.persistence.jdbc.url" value="jdbc:derby:SistemaDeEquiposDB;create=true" /> -->
-	<!-- <property name="javax.persistence.jdbc.user" value="root" /> -->
-	<!-- <property name="javax.persistence.jdbc.password" value="root" /> -->
-	<!-- Propieadades de configuracion de JDBC para MySQL -->
-	<!-- <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" /> -->
-	<!-- <property name="javax.persistence.jdbc.url" -->
-	<!-- value="jdbc:mysql://localhost:3306/SistemaDeEquiposDB;create=true" /> -->
-	<!-- <property name="javax.persistence.jdbc.user" value="root" /> -->
-	<!-- <property name="javax.persistence.jdbc.password" value="" /> -->
-	<!-- <property name="hibernate.hbm2ddl.auto" value="create" /> -->
-	<!-- <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/> -->
-	<!-- <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/> -->
-	<!-- </properties> -->
-	<!-- </persistence-unit> -->
+	</persistence-unit>
 
 </persistence>
+
