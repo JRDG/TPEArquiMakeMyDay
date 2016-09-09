@@ -29,16 +29,8 @@ public class Actividad_Realizada {
 		return actividad;
 	}
 
-	public void setActividad(Actividad actividad) {
-		this.actividad = actividad;
-	}
-
 	public Date getFecha_realizada() {
 		return fecha_realizada;
-	}
-
-	public void setFecha_realizada(Date fecha_realizada) {
-		this.fecha_realizada = fecha_realizada;
 	}
 
 	@Override
