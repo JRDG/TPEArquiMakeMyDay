@@ -19,7 +19,7 @@ public class Usuario {
 	@Column(nullable = false)
 	private String password;
 	
-	public Usuario(int id_usuario, String nombre, String apellido, String dNI, int edad, String password) {
+	public Usuario(String nombre, String apellido, String dNI, int edad, String password) {
 		this.id_usuario = id_usuario;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -28,13 +28,6 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public int getId_usuario() {
-		return id_usuario;
-	}
-
-	public void setId_usuario(int id_usuario) {
-		this.id_usuario = id_usuario;
-	}
 
 	public String getNombre() {
 		return nombre;
