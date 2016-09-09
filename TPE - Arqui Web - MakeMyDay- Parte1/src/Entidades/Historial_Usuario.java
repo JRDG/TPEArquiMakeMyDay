@@ -25,11 +25,11 @@ public class Historial_Usuario {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Historial_Usuario(Usuario usuario, Actividad_Realizada actividad, double nivelFelicidad, boolean privado) {
+	public Historial_Usuario(Usuario usuario, Actividad_Realizada actividad, double nivelFelicidad) {
 		this.usuario = usuario;
 		this.actividad = actividad;
 		this.nivelFelicidad = nivelFelicidad;
-		this.privado = privado;
+		this.privado = true;
 	}
 	public Date getFecha_fin() {
 		return fecha_fin;
@@ -48,6 +48,16 @@ public class Historial_Usuario {
 	}
 	public boolean isPrivado() {
 		return privado;
+	}
+	
+	public void setPrivacidad(boolean esPrivado){
+		privado = esPrivado;
+	}
+
+	@Override
+	public String toString() {
+		return "Historial_Usuario [id=" + id + ", usuario=" + usuario + ", actividad=" + actividad + ", nivelFelicidad="
+				+ nivelFelicidad + ", privado=" + privado + ", fecha_fin=" + fecha_fin + "]";
 	}
 	
 }

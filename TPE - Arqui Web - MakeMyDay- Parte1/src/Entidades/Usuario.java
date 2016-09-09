@@ -1,12 +1,12 @@
 package Entidades;
+
 import java.util.Date;
 
 import javax.persistence.*;
 
-
 @Entity
 public class Usuario {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_usuario;
@@ -20,11 +20,11 @@ public class Usuario {
 	private Date fechaNacimiento;
 	@Column(nullable = false)
 	private String password;
-	
+
 	public Usuario() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public Usuario(String nombre, String apellido, int dNI, Date fechaNacimiento, String password) {
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -32,7 +32,6 @@ public class Usuario {
 		this.fechaNacimiento = fechaNacimiento;
 		this.password = password;
 	}
-
 
 	public String getNombre() {
 		return nombre;
@@ -73,7 +72,10 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
+	public String toString() {
+		return "Usuario [id_usuario=" + id_usuario + ", nombre=" + nombre + ", apellido=" + apellido + ", DNI=" + DNI
+				+ ", fechaNacimiento=" + fechaNacimiento + ", password=" + password + "]";
+	}
 
 }
