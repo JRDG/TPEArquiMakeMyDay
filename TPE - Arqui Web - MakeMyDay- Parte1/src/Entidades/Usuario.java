@@ -1,4 +1,6 @@
 package Entidades;
+import java.util.Date;
+
 import javax.persistence.*;
 
 
@@ -13,9 +15,9 @@ public class Usuario {
 	@Column(nullable = false)
 	private String apellido;
 	@Column(nullable = false)
-	private String DNI;
+	private int DNI;
 	@Column(nullable = false)
-	private int edad;
+	private Date fechaNacimiento;
 	@Column(nullable = false)
 	private String password;
 	
@@ -23,11 +25,11 @@ public class Usuario {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Usuario(String nombre, String apellido, String dNI, int edad, String password) {
+	public Usuario(String nombre, String apellido, int dNI, Date fechaNacimiento, String password) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		DNI = dNI;
-		this.edad = edad;
+		this.fechaNacimiento = fechaNacimiento;
 		this.password = password;
 	}
 
@@ -48,20 +50,20 @@ public class Usuario {
 		this.apellido = apellido;
 	}
 
-	public String getDNI() {
+	public int getDNI() {
 		return DNI;
 	}
 
-	public void setDNI(String dNI) {
+	public void setDNI(int dNI) {
 		DNI = dNI;
 	}
 
-	public int getEdad() {
-		return edad;
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
 	}
 
-	public void setEdad(int edad) {
-		this.edad = edad;
+	public void setEdad(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
 	}
 
 	public String getPassword() {
