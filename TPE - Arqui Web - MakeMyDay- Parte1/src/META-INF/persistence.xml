@@ -11,6 +11,8 @@
 		<!-- <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider> -->
 		
 		<class>Entidades.Jugador</class>
+		dflgfdkghjfdgkjf
+		fdkgfdkgjfdkjgf
 		<class>Entidades.Equipo</class>
 
 		<properties>
