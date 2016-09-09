@@ -20,7 +20,6 @@ public class Usuario {
 	private String password;
 	
 	public Usuario(String nombre, String apellido, String dNI, int edad, String password) {
-		this.id_usuario = id_usuario;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		DNI = dNI;
