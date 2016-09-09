@@ -8,8 +8,10 @@ public class Historial_Usuario {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@Column(nullable = false)
+	@ManyToOne
 	private Usuario usuario;
 	@Column(nullable = false)
+	@ManyToOne
 	private Actividad_Realizada actividad;
 	@Column(nullable = false)
 	private double nivelFelicidad;

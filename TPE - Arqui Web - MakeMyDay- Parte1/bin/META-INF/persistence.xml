@@ -10,8 +10,11 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<!-- <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider> -->
 		
-<!-- 		<class>com.tudai.practico2ejemplo.entidades.Jugador</class> -->
-<!-- 		<class>com.tudai.practico2ejemplo.entidades.Equipo</class> -->
+		<class>Entidades.Actividad_Realizada</class>
+		<class>Entidades.Actividad</class>
+		<class>Entidades.Historial_Usuario</class>
+		<class>Entidades.Tipo_Actividad</class>
+		<class>Entidades.Usuario</class>		
 
 		<properties>
 			<!-- Propiedades de configuracion de JDBC para Apache Derby -->
