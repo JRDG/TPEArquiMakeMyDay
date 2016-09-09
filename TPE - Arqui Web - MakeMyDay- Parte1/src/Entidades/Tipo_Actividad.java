@@ -18,6 +18,7 @@ public class Tipo_Actividad {
 	private int idTipo;
 	
 	
+	
 	public Tipo_Actividad(String nombre){
 
 		
