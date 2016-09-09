@@ -1,6 +1,7 @@
 package Entidades;
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.GregorianCalendar;
 
 import javax.persistence.*;
 
@@ -17,7 +18,7 @@ public class Usuario {
 	@Column(nullable = false)
 	private int DNI;
 	@Column(nullable = false)
-	private Date fechaNacimiento;
+	private GregorianCalendar fechaNacimiento;
 	@Column(nullable = false)
 	private String password;
 
@@ -25,7 +26,7 @@ public class Usuario {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Usuario(String nombre, String apellido, int dNI, Date fechaNacimiento, String password) {
+	public Usuario(String nombre, String apellido, int dNI, GregorianCalendar fechaNacimiento, String password) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		DNI = dNI;
@@ -57,11 +58,11 @@ public class Usuario {
 		DNI = dNI;
 	}
 
-	public Date getFechaNacimiento() {
+	public GregorianCalendar getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setEdad(Date fechaNacimiento) {
+	public void setEdad(GregorianCalendar fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 

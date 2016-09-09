@@ -1,6 +1,16 @@
 package Entidades;
 import java.util.Date;
-import javax.persistence.*;
+import java.util.GregorianCalendar;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Historial_Usuario {
@@ -19,7 +29,7 @@ public class Historial_Usuario {
 	private boolean privado;
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date fecha_fin;
+	private GregorianCalendar fecha_fin;
 	
 	public Historial_Usuario() {
 		// TODO Auto-generated constructor stub
@@ -31,10 +41,10 @@ public class Historial_Usuario {
 		this.nivelFelicidad = nivelFelicidad;
 		this.privado = true;
 	}
-	public Date getFecha_fin() {
+	public GregorianCalendar getFecha_fin() {
 		return fecha_fin;
 	}
-	public void setFecha_fin(Date fecha_fin) {
+	public void setFecha_fin(GregorianCalendar fecha_fin) {
 		this.fecha_fin = fecha_fin;
 	}
 	public Usuario getUsuario() {
