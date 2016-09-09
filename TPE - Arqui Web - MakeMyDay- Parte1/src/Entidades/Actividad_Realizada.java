@@ -14,6 +14,7 @@ public class Actividad_Realizada {
 	@Column(nullable = false)
 	private Actividad actividad;
 	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha_realizada;
 	
 	public Actividad_Realizada(Actividad actividad,Date fecha_realizada){
