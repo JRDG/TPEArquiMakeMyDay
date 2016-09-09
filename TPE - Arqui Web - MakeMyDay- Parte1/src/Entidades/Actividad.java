@@ -2,6 +2,7 @@ package Entidades;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +24,7 @@ public class Actividad {
 	
 	@ManyToMany
 	@JoinColumn
-	private ArrayList<Tipo_Actividad> ListadeTipo;
+	private List<Tipo_Actividad> ListadeTipo;
 
 	public Actividad() {
 		ListadeTipo = new ArrayList<Tipo_Actividad>();
@@ -39,7 +40,7 @@ public class Actividad {
 	}
 
 	public ArrayList<Tipo_Actividad> getListadeTipo() {
-		return ListadeTipo;
+		return (ArrayList<Tipo_Actividad>) ListadeTipo;
 	}
 
 
