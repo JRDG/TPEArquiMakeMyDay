@@ -9,6 +9,8 @@ import Entidades.*;
 public class Listar_Usuarios {
 	
 	
+//	comentar linea 34 en persistence para utilizar el servicio
+	
 	public static void main(String[] args) {
 		EntityManagerFactory emfactory = null;		
 		EntityManager emanager = null;
