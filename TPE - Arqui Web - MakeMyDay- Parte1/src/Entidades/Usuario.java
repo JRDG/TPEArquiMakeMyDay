@@ -1,12 +1,16 @@
 package Entidades;
 
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
+
 
 import javax.persistence.*;
 
 @Entity
 public class Usuario {
 
+
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_usuario;
@@ -57,8 +61,8 @@ public class Usuario {
 		DNI = dNI;
 	}
 
-	public GregorianCalendar getFechaNacimiento() {
-		return fechaNacimiento;
+	public GregorianCalendar getCalendarNacimiento() {
+		return fechaNacimiento; 
 	}
 
 	public void setEdad(GregorianCalendar fechaNacimiento) {
@@ -75,7 +79,13 @@ public class Usuario {
 
 	public String toString() {
 		return "Usuario [id_usuario=" + id_usuario + ", nombre=" + nombre + ", apellido=" + apellido + ", DNI=" + DNI
-				+ ", fechaNacimiento=" + fechaNacimiento + ", password=" + password + "]";
+				+ ", fechaNacimiento=" + getFechaNacimiento(fechaNacimiento)  + ", password=" + password + "]";
+	}
+
+	private String getFechaNacimiento(GregorianCalendar fechaNacimiento2) {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		sdf.setCalendar(fechaNacimiento2);
+		return sdf.format(fechaNacimiento2.getTime());
 	}
 
 }
