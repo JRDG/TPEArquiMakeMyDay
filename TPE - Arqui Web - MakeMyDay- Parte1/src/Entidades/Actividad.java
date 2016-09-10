@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +23,7 @@ public class Actividad {
 	@Column(nullable=false)
 	private String nombre;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinColumn
 	private List<Tipo_Actividad> ListadeTipo;
 
@@ -43,8 +44,10 @@ public class Actividad {
 		return (ArrayList<Tipo_Actividad>) ListadeTipo;
 	}
 
-
-	
-	
+	@Override
+	public String toString() {
+		return "Actividad [idTipo=" + idTipo + ", nombre=" + nombre + ", ListadeTipo=" + ListadeTipo.toString() + "]";
+	}
+		
 	
 }

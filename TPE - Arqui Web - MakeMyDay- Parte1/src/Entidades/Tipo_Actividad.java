@@ -27,6 +27,12 @@ public class Tipo_Actividad {
 	public int getId(){
 		return idTipo;
 	}
+
+	@Override
+	public String toString() {
+		return "Tipo_Actividad [nombre=" + nombre + ", idTipo=" + idTipo + "]";
+	}
+	
 	
 	
 }
