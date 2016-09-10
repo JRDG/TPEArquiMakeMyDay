@@ -1,4 +1,4 @@
-package Entidades;
+package entidades;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;

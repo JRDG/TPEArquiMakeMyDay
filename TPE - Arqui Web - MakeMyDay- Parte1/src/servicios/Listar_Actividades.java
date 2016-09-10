@@ -1,12 +1,13 @@
-package Servicios;
+package servicios;
 
-import Entidades.*;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+
+import entidades.Actividad;
 
 public class Listar_Actividades {
 	

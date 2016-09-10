@@ -1,4 +1,4 @@
-package Servicios;
+package servicios;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import Entidades.Usuario;
+import entidades.Usuario;
 
 public class Obtener_Estadisticas {
 

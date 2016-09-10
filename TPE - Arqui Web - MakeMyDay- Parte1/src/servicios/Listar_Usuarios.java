@@ -1,10 +1,10 @@
-package Servicios;
+package servicios;
 
 import java.util.List;
 
 import javax.persistence.*;
 
-import Entidades.*;
+import entidades.*;
 
 public class Listar_Usuarios {
 	

@@ -10,11 +10,11 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<!-- <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider> -->
 		
-		<class>Entidades.Actividad_Realizada</class>
-		<class>Entidades.Actividad</class>
-		<class>Entidades.Historial_Usuario</class>
-		<class>Entidades.Tipo_Actividad</class>
-		<class>Entidades.Usuario</class>		
+		<class>entidades.Actividad_Realizada</class>
+		<class>entidades.Actividad</class>
+		<class>entidades.Historial_Usuario</class>
+		<class>entidades.Tipo_Actividad</class>
+		<class>entidades.Usuario</class>		
 
 		<properties>
 			<!-- Propiedades de configuracion de JDBC para Apache Derby -->
