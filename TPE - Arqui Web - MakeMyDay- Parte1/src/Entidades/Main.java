@@ -1,6 +1,5 @@
 package Entidades;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -37,8 +36,9 @@ public class Main {
 			tipos.add(t1);
 			Actividad a1 = new Actividad("cazar pokemon", tipos);
 			Actividad_Realizada ar1 = new Actividad_Realizada(a1, new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-			Historial_Usuario h1 = new Historial_Usuario(tar, ar1, 5);
+			Historial_Usuario h1 = new Historial_Usuario(tar, ar1);
 			h1.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h1.setNivelFelicidad(5);
 			
 			emanager.persist(joa);
 			emanager.persist(san);

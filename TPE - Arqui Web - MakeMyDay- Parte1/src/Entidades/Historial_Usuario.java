@@ -1,5 +1,5 @@
 package Entidades;
-import java.util.Date;
+
 import java.util.GregorianCalendar;
 
 import javax.persistence.Column;
@@ -35,10 +35,10 @@ public class Historial_Usuario {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Historial_Usuario(Usuario usuario, Actividad_Realizada actividad, double nivelFelicidad) {
+	public Historial_Usuario(Usuario usuario, Actividad_Realizada actividad) {
 		this.usuario = usuario;
 		this.actividad = actividad;
-		this.nivelFelicidad = nivelFelicidad;
+		this.nivelFelicidad = 0.0;
 		this.privado = true;
 	}
 	public GregorianCalendar getFecha_fin() {
@@ -62,6 +62,14 @@ public class Historial_Usuario {
 	
 	public void setPrivacidad(boolean esPrivado){
 		privado = esPrivado;
+	}
+	
+	public void setNivelFelicidad(double nivelFelicidad) {
+		this.nivelFelicidad = nivelFelicidad;
+	}
+
+	public void setPrivado(boolean privado) {
+		this.privado = privado;
 	}
 
 	@Override
