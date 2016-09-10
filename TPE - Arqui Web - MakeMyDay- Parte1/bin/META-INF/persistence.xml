@@ -30,6 +30,8 @@
 			<!-- Propiedad para la generacion automatica del esquema de base de datos -->
 <!-- 			<property name="hibernate.hbm2ddl.auto" value="create" /> -->
 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+			<property name="eclipselink.logging.level.sql" value="FINE"/>
+ 			<property name="eclipselink.logging.parameters" value="true"/>
 			<!-- <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/> -->
 		</properties>
 	</persistence-unit>
