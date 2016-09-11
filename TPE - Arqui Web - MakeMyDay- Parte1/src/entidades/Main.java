@@ -19,7 +19,7 @@ public class Main {
 
 			emanager.getTransaction().begin();
 			//usuarios
-			Usuario joa = new Usuario("Joa","Quin",35647897,new GregorianCalendar(1993,7,25) ,"2567");
+			Usuario joa = new Usuario("Joa","Quin",35647897,new GregorianCalendar(1994,7,25) ,"2567");
 			Usuario san = new Usuario("San","Tiago",38838109,new GregorianCalendar(1995,7,25) ,"2567");
 			Usuario vic = new Usuario("Vic","Tor",58938019,new GregorianCalendar(1985,7,25) ,"2567");
 			Usuario pe = new Usuario("Pe","Tuto",38698719,new GregorianCalendar(1955,7,25) ,"2567");
