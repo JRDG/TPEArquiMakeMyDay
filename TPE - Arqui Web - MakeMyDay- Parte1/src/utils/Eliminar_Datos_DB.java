@@ -1,4 +1,4 @@
-package servicios;
+package utils;
 
 import java.util.List;
 
@@ -17,8 +17,8 @@ public class Eliminar_Datos_DB {
 		try {
 			emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 			emanager = emfactory.createEntityManager();
-	
 			emanager.getTransaction().begin();	
+			
 			//Borra TODO		    
 			//emanager.createNativeQuery("drop database makemyday").executeUpdate();
 			//Creo DB
