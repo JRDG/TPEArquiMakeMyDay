@@ -36,9 +36,9 @@ public class Main {
 			Tipo_Actividad academico = new Tipo_Actividad("academico");
 			Tipo_Actividad deporte = new Tipo_Actividad("deporte");
 			Tipo_Actividad ocio = new Tipo_Actividad("ocio");
-			
-			
-			
+
+
+
 			//actividades
 			Actividad a1 = new Actividad("Cazar Pokemon", new ArrayList<Tipo_Actividad>(){{
 				add(ocio);
@@ -81,9 +81,9 @@ public class Main {
 				add(outdoor);
 				add(deporte);
 			}});
-			
-			
-			
+
+
+
 			//actividades realizadas
 			Actividad_Realizada ar1 = new Actividad_Realizada(a1, new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			Actividad_Realizada ar2 = new Actividad_Realizada(a1, new GregorianCalendar(2016,5,23,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
@@ -108,86 +108,86 @@ public class Main {
 
 			//historiales de usuario
 			Historial_Usuario h1 = new Historial_Usuario(tar, ar1);
-			h1.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h1.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h1.setNivelFelicidad(4);
-			
+
 			Historial_Usuario h2 = new Historial_Usuario(cue, ar2);
-			h2.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h2.setFecha_fin(new GregorianCalendar(2016,1,6,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h2.setNivelFelicidad(3);
-			
+
 			Historial_Usuario h3 = new Historial_Usuario(tar, ar3);
-			h3.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h3.setFecha_fin(new GregorianCalendar(2016,8,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h3.setNivelFelicidad(3);
-			
+
 			Historial_Usuario h4 = new Historial_Usuario(cue, ar4);
-			h4.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h4.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h4.setNivelFelicidad(4);
-			
+
 			Historial_Usuario h5 = new Historial_Usuario(joa, ar5);
-			h5.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h5.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h5.setNivelFelicidad(5);
-			
+
 			Historial_Usuario h6 = new Historial_Usuario(san, ar6);
-			h6.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h6.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h6.setNivelFelicidad(1);
-			
+
 			Historial_Usuario h7 = new Historial_Usuario(joa, ar7);
-			h7.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h7.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h7.setNivelFelicidad(2);
-			
+
 			Historial_Usuario h8 = new Historial_Usuario(san, ar8);
-			h8.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h8.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h8.setNivelFelicidad(3);
-			
+
 			Historial_Usuario h9 = new Historial_Usuario(vic, ar9);
-			h9.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h9.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h9.setNivelFelicidad(4);
-			
+
 			Historial_Usuario h10 = new Historial_Usuario(pe, ar10);
-			h10.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h10.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h10.setNivelFelicidad(5);
-			
+
 			Historial_Usuario h11 = new Historial_Usuario(vic, ar11);
-			h11.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h11.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h11.setNivelFelicidad(1);
-			
+
 			Historial_Usuario h12 = new Historial_Usuario(pe, ar12);
-			h12.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h12.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h12.setNivelFelicidad(2);
-			
+
 			Historial_Usuario h13 = new Historial_Usuario(ku, ar13);
-			h13.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h13.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h13.setNivelFelicidad(3);
-			
+
 			Historial_Usuario h14 = new Historial_Usuario(yo, ar14);
-			h14.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h14.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h14.setNivelFelicidad(4);
-			
+
 			Historial_Usuario h15 = new Historial_Usuario(ku, ar15);
-			h15.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h15.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h15.setNivelFelicidad(5);
-			
+
 			Historial_Usuario h16 = new Historial_Usuario(yo, ar16);
-			h16.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h16.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h16.setNivelFelicidad(1);
-			
+
 			Historial_Usuario h17 = new Historial_Usuario(dar, ar17);
-			h17.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h17.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h17.setNivelFelicidad(2);
-			
+
 			Historial_Usuario h18 = new Historial_Usuario(juan, ar18);
-			h18.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h18.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h18.setNivelFelicidad(3);
-			
+
 			Historial_Usuario h19 = new Historial_Usuario(dar, ar19);
-			h19.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h19.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h19.setNivelFelicidad(4);
-			
+
 			Historial_Usuario h20 = new Historial_Usuario(juan, ar20);
-			h20.setFecha_fin(new GregorianCalendar(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+			h20.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 			h20.setNivelFelicidad(5);
-			
-			
+
+
 			//usuarios
 			emanager.persist(joa);
 			emanager.persist(san);
@@ -258,7 +258,7 @@ public class Main {
 			emanager.persist(h18);
 			emanager.persist(h19);
 			emanager.persist(h20);
-			
+
 			emanager.getTransaction().commit();
 
 
