@@ -7,8 +7,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import entidades.Usuario;
-
 
 public class Eliminar_Datos_DB {
 
@@ -21,17 +19,36 @@ public class Eliminar_Datos_DB {
 			emanager = emfactory.createEntityManager();
 	
 			emanager.getTransaction().begin();	
-	
+			//Borra TODO		    
+			//emanager.createNativeQuery("drop database makemyday").executeUpdate();
+			//Creo DB
+			//emanager.createNativeQuery("create database makemyday").executeUpdate();
 	 
-		    String jpql1 = "SELECT CONCAT('drop table ',table_name,'; ') FROM information_schema.tables WHERE table_schema = 'makemyday';"; 
-//		    String jpql2 = "SELECT CONCAT('alter table ' ,table_name, ' DROP INDEX 'tablename FROM information_schema.keycolumnusage WHERE referencedtablename ='$t'"
+
+		    String jpql1 = "SELECT CONCAT('alter table ',table_name,' drop foreign key ', constraint_name,';') FROM information_schema.key_column_usage WHERE table_schema = 'makemyday' and not (constraint_name like 'primary');";
+		    String jpql2 = "SELECT CONCAT('drop table ',table_name,'; ') FROM information_schema.tables WHERE table_schema = 'makemyday';"; 		    
+
 		    
-		    Query query = emanager.createNativeQuery(jpql1); 
-		    List<String> resultados = query.getResultList(); 
-		    for(String  r : resultados) { 
-		    	Query query2 = emanager.createNativeQuery(r);  
-		    	query2.executeUpdate();
-		    } 
+		    Query q1 = emanager.createNativeQuery(jpql1);
+		    Query q2 = emanager.createNativeQuery(jpql2); 
+    
+		    List<String> rFK = q1.getResultList();
+		    List<String> rT = q2.getResultList();
+
+		    System.out.println(rFK);
+		    System.out.println("");
+		    System.out.println(rT);
+
+		    
+		    for(String  r : rFK) { 
+		    	Query qAux = emanager.createNativeQuery(r);  
+		    	qAux.executeUpdate();
+		    }
+		    for(String  r : rT) { 
+		    	Query qAux = emanager.createNativeQuery(r);  
+		    	qAux.executeUpdate();
+		    }
+		    
 		     
 	
 		} catch (Exception e) {
