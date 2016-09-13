@@ -31,7 +31,7 @@
 <!-- 			<property name="hibernate.hbm2ddl.auto" value="create" /> -->
 
 
-<!-- comentar siguiente linea para realizar los servicios  -->
+<!-- comentar siguiente linea para realizar las clases de Utils menos la de Llenar_DB  -->
 
 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
 
