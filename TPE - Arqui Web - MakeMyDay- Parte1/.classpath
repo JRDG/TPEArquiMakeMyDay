@@ -8,7 +8,7 @@
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.39-bin.jar"/>
 	<classpathentry kind="lib" path="lib/commonj.sdo_2.1.1.v201112051852.jar"/>
 	<classpathentry kind="lib" path="lib/javax.mail_1.4.0.v201005080615.jar"/>
-	<classpathentry kind="lib" path="lib/javax.persistence_2.1.1.v201509150925.jar"/>
+	<classpathentry kind="lib" path="lib/javax.persistence_2.1.1.v201509150925.jar" sourcepath="C:/Users/Soushima/.m2/repository/org/eclipse/persistence/javax.persistence/2.1.1/javax.persistence-2.1.1-sources.jar"/>
 	<classpathentry kind="lib" path="lib/javax.persistence.source_2.1.1.v201509150925.jar"/>
 	<classpathentry kind="lib" path="lib/javax.validation_1.1.0.v201304101302.jar"/>
 	<classpathentry kind="lib" path="lib/javax.xml.bind_2.2.12.v201410011542.jar"/>
