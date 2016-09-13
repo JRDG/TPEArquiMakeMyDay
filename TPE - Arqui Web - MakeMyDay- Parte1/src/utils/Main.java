@@ -1,6 +1,4 @@
-package entidades;
-
-import utils.*;
+package utils;
 
 public class Main {
 
