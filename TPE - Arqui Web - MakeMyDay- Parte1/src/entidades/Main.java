@@ -5,15 +5,14 @@ import utils.*;
 public class Main {
 
 	public static void main(String[] args) {
-		Llenar_DB c = new Llenar_DB();
-		c.inicializarFactory();
-		c.cargar(); //Necesita tener descomentada la linea 36 del persistence 
-		Search_Utils s = new Search_Utils();
+		Servicios s = new Servicios();
 		s.inicializarFactory();
+		s.cargarDatosEnDB(); //Necesita tener descomentada la linea 36 del persistence 
 		s.Listar_Actividades();
 		s.ListarUsuarios();
 		s.ListarActividadesEntreFechas();
 		s.ObtenerEstadisticas();
+		s.EliminarDatosDB();
 		s.cerrarFactory();
 	}
 
