@@ -15,15 +15,26 @@ import entidades.Tipo_Actividad;
 import entidades.Usuario;
 
 public class Llenar_DB {
+	
+	private EntityManagerFactory emfactory;
+	private EntityManager emanager;
+	
+	public Llenar_DB(){
+		emfactory = null;
+		emanager = null;
+	}
 
-	public static void cargar(String[] args) {
-		
-		EntityManagerFactory emfactory = null;
-		EntityManager emanager = null;
+	public void inicializarFactory(){
 		try {
 			emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@SuppressWarnings("serial")
+	public void cargar() {
 			emanager = emfactory.createEntityManager();
-
 			emanager.getTransaction().begin();
 			//usuarios
 			Usuario joa = new Usuario("Joa","Quin",35647897,new GregorianCalendar(1994,7,25) ,"2567");
@@ -268,18 +279,20 @@ public class Llenar_DB {
 
 			emanager.getTransaction().commit();
 
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (emanager != null)
+			if (emanager != null){
 				emanager.close();
-			if (emfactory != null)
-				emfactory.close();
-		}
+			}
+				
+			
 	}
 	
 
+	public void cerrarFactory(){
+		if (emfactory != null){
+			emfactory.close();
+		}	
+	}
+	
 }
 
 
