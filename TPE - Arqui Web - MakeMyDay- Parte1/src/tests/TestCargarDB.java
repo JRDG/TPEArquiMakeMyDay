@@ -362,7 +362,7 @@ public class TestCargarDB {
 		}	
 	}	
 	
-	@Before
+	@After
 	public void cerrarFactory(){
 		if (emfactory != null){
 			emfactory.close();
