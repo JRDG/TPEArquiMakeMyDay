@@ -41,56 +41,72 @@ public class Servicios {
 	}
 	
 	public void ListarActividadesEntreFechas(){
-		emanager = emfactory.createEntityManager();
-		String usuario = "tar";
-		Calendar fecha1 = new GregorianCalendar(2015,7,1);
-		Calendar fecha2 = new GregorianCalendar(2016,4,30);
-	    String jpql = "SELECT h.actividad FROM Historial_Usuario h WHERE h.usuario.nombre = ?1 AND (h.actividad.fecha_realizada > ?2 AND h.fecha_fin < ?3)"; 
-		Query query = emanager.createQuery(jpql).setParameter(1, usuario).setParameter(2,fecha1).setParameter(3,fecha2); 
-	    List<Actividad_Realizada> resultados = query.getResultList();
-	    for(Actividad_Realizada  r : resultados) { 
-	       	System.out.println(r);
-	    } 
+		try{
+			emanager = emfactory.createEntityManager();
+			String usuario = "tar";
+			Calendar fecha1 = new GregorianCalendar(2015,7,1);
+			Calendar fecha2 = new GregorianCalendar(2016,4,30);
+			String jpql = "SELECT h.actividad FROM Historial_Usuario h WHERE h.usuario.nombre = ?1 AND (h.actividad.fecha_realizada > ?2 AND h.fecha_fin < ?3)"; 
+			Query query = emanager.createQuery(jpql).setParameter(1, usuario).setParameter(2,fecha1).setParameter(3,fecha2); 
+			List<Actividad_Realizada> resultados = query.getResultList();
+			for(Actividad_Realizada  r : resultados) { 
+				System.out.println(r);
+			} 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		if (emanager != null){
 			emanager.close();
 		}	
 	}
 	
 	public void Listar_Actividades(){
-		emanager = emfactory.createEntityManager();
-	    String jpql = "SELECT a FROM Actividad a"; 
-	    Query query = emanager.createQuery(jpql); 
-	    List<Actividad> resultados = query.getResultList();
-	    for(Actividad  r : resultados) { 
-	    	System.out.println(r.toString());
-	    } 
+		try{
+			emanager = emfactory.createEntityManager();
+			String jpql = "SELECT a FROM Actividad a"; 
+			Query query = emanager.createQuery(jpql); 
+			List<Actividad> resultados = query.getResultList();
+			for(Actividad  r : resultados) { 
+				System.out.println(r.toString());
+			} 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		if (emanager != null){
 			emanager.close();
 		}
 	}
 	
 	public void ListarUsuarios(){
-		emanager = emfactory.createEntityManager();
-	    String jpql = "SELECT u FROM Usuario u"; 
-	    Query query = emanager.createQuery(jpql); 
-	    List<Usuario> resultados = query.getResultList();
-	    for(Usuario  u : resultados) { 
-		    System.out.println(u.toString());    
-		} 
+		try{
+			emanager = emfactory.createEntityManager();
+			String jpql = "SELECT u FROM Usuario u"; 
+			Query query = emanager.createQuery(jpql); 
+			List<Usuario> resultados = query.getResultList();
+			for(Usuario  u : resultados) { 
+				System.out.println(u.toString());    
+			} 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		if (emanager != null){
 			emanager.close();
 		}		
 	}
 	
 	public void ObtenerEstadisticas(){
-		emanager = emfactory.createEntityManager();
-		String jpql = "SELECT AVG(h.nivelFelicidad), MIN(h.nivelFelicidad), MAX(h.nivelFelicidad) FROM Historial_Usuario h WHERE h.usuario.DNI LIKE ?1"; 
-		Query query = emanager.createQuery(jpql).setParameter(1, 3); 
-		List<Object[]> resultados = query.getResultList();
-		System.out.println("Estadisticas del Usuario");
-	    System.out.println("Promedio: " + (Double) resultados.get(0)[0]);
-	   	System.out.println("Minimo: " + (Double) resultados.get(0)[1]);
-	   	System.out.println("Maximo: " + (Double) resultados.get(0)[2]);
+		try{
+			emanager = emfactory.createEntityManager();
+			String jpql = "SELECT AVG(h.nivelFelicidad), MIN(h.nivelFelicidad), MAX(h.nivelFelicidad) FROM Historial_Usuario h WHERE h.usuario.DNI LIKE ?1"; 
+			Query query = emanager.createQuery(jpql).setParameter(1, 3); 
+			List<Object[]> resultados = query.getResultList();
+			System.out.println("Estadisticas del Usuario");
+			System.out.println("Promedio: " + (Double) resultados.get(0)[0]);
+			System.out.println("Minimo: " + (Double) resultados.get(0)[1]);
+			System.out.println("Maximo: " + (Double) resultados.get(0)[2]);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
 		if (emanager != null){
 			emanager.close();
 		}	
@@ -98,6 +114,7 @@ public class Servicios {
 	
 	@SuppressWarnings("serial")
 	public void cargarDatosEnDB() {
+		try {
 			emanager = emfactory.createEntityManager();
 			emanager.getTransaction().begin();
 			//usuarios
@@ -342,36 +359,42 @@ public class Servicios {
 			emanager.persist(h20);
 
 			emanager.getTransaction().commit();
-
-			if (emanager != null){
-				emanager.close();
-			}						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (emanager != null){
+			emanager.close();
+		}						
 	}
 	
 	public void EliminarDatosDB(){
-		emanager = emfactory.createEntityManager();
-		emanager.getTransaction().begin();	
+		try{
+			emanager = emfactory.createEntityManager();
+			emanager.getTransaction().begin();	
 		
-	    String jpql1 = "SELECT CONCAT('alter table ',table_name,' drop foreign key ', constraint_name,';') FROM information_schema.key_column_usage WHERE table_schema = 'makemyday' and not (constraint_name like 'primary');";
-	    String jpql2 = "SELECT CONCAT('drop table ',table_name,'; ') FROM information_schema.tables WHERE table_schema = 'makemyday';"; 		    
+			String jpql1 = "SELECT CONCAT('alter table ',table_name,' drop foreign key ', constraint_name,';') FROM information_schema.key_column_usage WHERE table_schema = 'makemyday' and not (constraint_name like 'primary');";
+			String jpql2 = "SELECT CONCAT('drop table ',table_name,'; ') FROM information_schema.tables WHERE table_schema = 'makemyday';"; 		    
 	 
-	    Query q1 = emanager.createNativeQuery(jpql1);
-	    Query q2 = emanager.createNativeQuery(jpql2); 
+			Query q1 = emanager.createNativeQuery(jpql1);
+			Query q2 = emanager.createNativeQuery(jpql2); 
     
-	    List<String> rFK = q1.getResultList();
-	    List<String> rT = q2.getResultList();
+			List<String> rFK = q1.getResultList();
+			List<String> rT = q2.getResultList();
 
-	    System.out.println(rFK);
-	    System.out.println("");
-	    System.out.println(rT);
+			System.out.println(rFK);
+			System.out.println("");
+			System.out.println(rT);
 		    
-	    for(String  r : rFK) { 
-	    	Query qAux = emanager.createNativeQuery(r);  
-	    	qAux.executeUpdate();
-	    }
-		for(String  r : rT) { 
-		   	Query qAux = emanager.createNativeQuery(r);  
-		   	qAux.executeUpdate();
+			for(String  r : rFK) { 
+				Query qAux = emanager.createNativeQuery(r);  
+				qAux.executeUpdate();
+			}
+			for(String  r : rT) { 
+				Query qAux = emanager.createNativeQuery(r);  
+		   		qAux.executeUpdate();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		if (emanager != null){
 			emanager.close();
