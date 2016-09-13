@@ -4,6 +4,7 @@ package entidades;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+
+import org.eclipse.persistence.jpa.config.Cascade;
 
 @Entity
 public class Actividad {
@@ -23,7 +26,7 @@ public class Actividad {
 	@Column(nullable=false)
 	private String nombre;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
 	@JoinColumn
 	private List<Tipo_Actividad> ListadeTipo;
 
