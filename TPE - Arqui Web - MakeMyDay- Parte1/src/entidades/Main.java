@@ -1,6 +1,6 @@
 package entidades;
 
-import utils.Llenar_DB;
+import utils.*;
 
 public class Main {
 
@@ -9,6 +9,13 @@ public class Main {
 		c.inicializarFactory();
 		c.cargar(); //Necesita tener descomentada la linea 36 del persistence 
 		c.cerrarFactory();
+		/*Search_Utils s = new Search_Utils();
+		s.inicializarFactory();
+		s.Listar_Actividades();
+		s.ListarUsuarios();
+		s.ListarActividadesEntreFechas();
+		s.ObtenerEstadisticas();
+		s.cerrarFactory();*/
 	}
 
 }
