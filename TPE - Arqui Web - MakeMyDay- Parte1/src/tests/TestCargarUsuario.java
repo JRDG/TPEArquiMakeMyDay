@@ -16,26 +16,23 @@ import entidades.Usuario;
 
 public class TestCargarUsuario {
 
-	@Test
-	public void test() {
-		EntityManagerFactory emfactory;
-		EntityManager emanager;
-		
-		Usuario joa;
-		Usuario san;
-		Usuario vic;
-		Usuario pe;
-		Usuario tar;
-		Usuario ku;
-		Usuario yo;
-		Usuario dar;
-		Usuario juan;
-		Usuario cue;
-	}
+	private EntityManagerFactory emfactory;
+	private EntityManager emanager;
 	
+	Usuario joa;
+	Usuario san;
+	Usuario vic;
+	Usuario pe;
+	Usuario tar;
+	Usuario ku;
+	Usuario yo;
+	Usuario dar;
+	Usuario juan;
+	Usuario cue;
 	
+
 	@Before
-	public void inicializacion2(){
+	public void inicializacion(){
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 				
 		//usuarios
@@ -50,10 +47,11 @@ public class TestCargarUsuario {
 		juan = new Usuario("Juan","Se",38838019,new GregorianCalendar(1998,7,25) ,"2567");
 		cue = new Usuario("Cue","Li",39874519,new GregorianCalendar(1997,7,25) ,"2567");
 		
-	}	
+	}		
 	
+
 	@Test
-	public void testCargarUsuarios2() {
+	public void testCargarUsuarios() {
 		emanager = emfactory.createEntityManager();
 		emanager.getTransaction().begin();
 		emanager.persist(joa);
