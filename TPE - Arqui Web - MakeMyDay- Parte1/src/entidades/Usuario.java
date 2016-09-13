@@ -88,4 +88,38 @@ public class Usuario {
 		return sdf.format(fechaNacimiento2.getTime());
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		if (DNI != other.DNI)
+			return false;
+		if (apellido == null) {
+			if (other.apellido != null)
+				return false;
+		} else if (!apellido.equals(other.apellido))
+			return false;
+		if (fechaNacimiento == null) {
+			if (other.fechaNacimiento != null)
+				return false;
+		} else if (!fechaNacimiento.equals(other.fechaNacimiento))
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		return true;
+	}	
+
 }

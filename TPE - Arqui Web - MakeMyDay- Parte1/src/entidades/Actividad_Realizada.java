@@ -52,6 +52,27 @@ public class Actividad_Realizada {
 		return "Actividad_Realizada [actividad=" + actividad
 				+ ", fecha_realizada=" + fecha_realizada + "]";
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Actividad_Realizada other = (Actividad_Realizada) obj;
+		if (actividad == null) {
+			if (other.actividad != null)
+				return false;
+		} else if (!actividad.equals(other.actividad))
+			return false;
+		if (fecha_realizada == null) {
+			if (other.fecha_realizada != null)
+				return false;
+		} else if (!fecha_realizada.equals(other.fecha_realizada))
+			return false;
+		return true;
+	}
 	
 }

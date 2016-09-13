@@ -77,5 +77,37 @@ public class Historial_Usuario {
 		return "Historial_Usuario [id=" + id + ", usuario=" + usuario + ", actividad=" + actividad + ", nivelFelicidad="
 				+ nivelFelicidad + ", privado=" + privado + ", fecha_fin=" + fecha_fin + "]";
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Historial_Usuario other = (Historial_Usuario) obj;
+		if (actividad == null) {
+			if (other.actividad != null)
+				return false;
+		} else if (!actividad.equals(other.actividad))
+			return false;
+		if (fecha_fin == null) {
+			if (other.fecha_fin != null)
+				return false;
+		} else if (!fecha_fin.equals(other.fecha_fin))
+			return false;
+		if (Double.doubleToLongBits(nivelFelicidad) != Double.doubleToLongBits(other.nivelFelicidad))
+			return false;
+		if (privado != other.privado)
+			return false;
+		if (usuario == null) {
+			if (other.usuario != null)
+				return false;
+		} else if (!usuario.equals(other.usuario))
+			return false;
+		return true;
+	}	
+	
 	
 }
