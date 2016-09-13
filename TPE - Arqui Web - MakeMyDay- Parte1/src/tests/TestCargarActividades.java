@@ -111,5 +111,13 @@ public class TestCargarActividades {
 			emanager.close();
 		}	
 	}
+	
+	@After
+	public void cerrarFactory(){
+		if (emfactory != null){
+			emfactory.close();
+		}	
+	}
+
 
 }
