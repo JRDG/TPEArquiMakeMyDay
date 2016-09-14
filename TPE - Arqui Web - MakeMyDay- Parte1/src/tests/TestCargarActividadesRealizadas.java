@@ -57,6 +57,7 @@ public class TestCargarActividadesRealizadas {
 	
 	@Before
 	public void inicializacion(){
+		
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 	
 		//actividades realizadas
