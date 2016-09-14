@@ -20,7 +20,7 @@ public class Actividad_Realizada {
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private int id_actividad_realizada;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn
 	private Actividad actividad;
 	@Column(nullable = false)

@@ -18,10 +18,10 @@ public class Historial_Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn
 	private Usuario usuario;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn
 	private Actividad_Realizada actividad;
 	@Column(nullable = false)

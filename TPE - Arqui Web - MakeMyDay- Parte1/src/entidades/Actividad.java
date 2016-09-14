@@ -26,7 +26,7 @@ public class Actividad {
 	@Column(nullable=false)
 	private String nombre;
 	
-	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinColumn
 	private List<Tipo_Actividad> ListadeTipo;
 
