@@ -5,10 +5,12 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import org.junit.After;
 import org.junit.Before;
@@ -22,23 +24,6 @@ public class TestCargarActividadesRealizadas {
 	
 	private EntityManagerFactory emfactory;
 	private EntityManager emanager;
-
-	Tipo_Actividad outdoor;
-	Tipo_Actividad indoor;
-	Tipo_Actividad academico;
-	Tipo_Actividad deporte;
-	Tipo_Actividad ocio;
-	
-	Actividad a1;
-	Actividad a2;
-	Actividad a3;
-	Actividad a4;
-	Actividad a5;
-	Actividad a6;
-	Actividad a7;
-	Actividad a8;
-	Actividad a9;
-	Actividad a10;
 	
 	Actividad_Realizada ar1;
 	Actividad_Realizada ar2;
@@ -67,77 +52,32 @@ public class TestCargarActividadesRealizadas {
 		
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 
-		//tipos
-		outdoor = new Tipo_Actividad("outdoor");
-		indoor = new Tipo_Actividad("indoor");
-		academico = new Tipo_Actividad("academico");
-		deporte = new Tipo_Actividad("deporte");
-		ocio = new Tipo_Actividad("ocio");		
-		
-		//actividades
-		a1 = new Actividad("Cazar Pokemon", new ArrayList<Tipo_Actividad>(){{
-			add(ocio);
-			add(outdoor);
-		}});
-		a2 = new Actividad("Comer Helado", new ArrayList<Tipo_Actividad>(){{
-			add(ocio);
-			add(outdoor);
-		}});
-		a3 = new Actividad("Jugar al futbol", new ArrayList<Tipo_Actividad>(){{
-			add(ocio);
-			add(outdoor);
-			add(deporte);
-		}});
-		a4 = new Actividad("Trabajar", new ArrayList<Tipo_Actividad>(){{
-			add(indoor);
-		}});
-		a5 = new Actividad("Ir a cursar", new ArrayList<Tipo_Actividad>(){{
-			add(indoor);
-			add(academico);
-		}});
-		a6 = new Actividad("Comer facturas", new ArrayList<Tipo_Actividad>(){{
-			add(ocio);
-			add(indoor);
-		}});
-		a7 = new Actividad("Hacer el tpe de arqui", new ArrayList<Tipo_Actividad>(){{
-			add(indoor);
-			add(academico);
-		}});
-		a8 = new Actividad("Evoluciona pokemones", new ArrayList<Tipo_Actividad>(){{
-			add(ocio);
-			add(indoor);
-		}});
-		a9 = new Actividad("Ir al GYM", new ArrayList<Tipo_Actividad>(){{
-			add(ocio);
-			add(indoor);
-		}});
-		a10 = new Actividad("Correr", new ArrayList<Tipo_Actividad>(){{
-			add(ocio);
-			add(outdoor);
-			add(deporte);
-		}});
+		emanager = emfactory.createEntityManager();
+		String jpql = "SELECT a FROM Actividad a"; 
+		Query query = emanager.createQuery(jpql); 
+		List<Actividad> resultados = query.getResultList();
 		
 		//actividades realizadas
-		ar1 = new Actividad_Realizada(a1, new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar2 = new Actividad_Realizada(a1, new GregorianCalendar(2016,5,23,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar3 = new Actividad_Realizada(a2, new GregorianCalendar(2016,6,15,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar4 = new Actividad_Realizada(a2, new GregorianCalendar(2016,5,20,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar5 = new Actividad_Realizada(a3, new GregorianCalendar(2016,7,23,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar6 = new Actividad_Realizada(a3, new GregorianCalendar(2016,1,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar7 = new Actividad_Realizada(a4, new GregorianCalendar(2016,9,3,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar8 = new Actividad_Realizada(a4, new GregorianCalendar(2016,10,13,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar9 = new Actividad_Realizada(a5, new GregorianCalendar(2016,4,30,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar10 = new Actividad_Realizada(a5, new GregorianCalendar(2016,8,3,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar11 = new Actividad_Realizada(a6, new GregorianCalendar(2016,3,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar12 = new Actividad_Realizada(a6, new GregorianCalendar(2016,9,4,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar13 = new Actividad_Realizada(a7, new GregorianCalendar(2016,9,6,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar14 = new Actividad_Realizada(a7, new GregorianCalendar(2016,2,3,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar15 = new Actividad_Realizada(a8, new GregorianCalendar(2016,7,31,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar16 = new Actividad_Realizada(a8, new GregorianCalendar(2016,2,4,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar17 = new Actividad_Realizada(a9, new GregorianCalendar(2016,11,19,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar18 = new Actividad_Realizada(a9, new GregorianCalendar(2016,0,6,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar19 = new Actividad_Realizada(a10, new GregorianCalendar(2016,2,28,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-		ar20 = new Actividad_Realizada(a10, new GregorianCalendar(2016,6,24,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar1 = new Actividad_Realizada(resultados.get(0), new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar2 = new Actividad_Realizada(resultados.get(0), new GregorianCalendar(2016,5,23,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar3 = new Actividad_Realizada(resultados.get(1), new GregorianCalendar(2016,6,15,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar4 = new Actividad_Realizada(resultados.get(1), new GregorianCalendar(2016,5,20,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar5 = new Actividad_Realizada(resultados.get(2), new GregorianCalendar(2016,7,23,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar6 = new Actividad_Realizada(resultados.get(2), new GregorianCalendar(2016,1,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar7 = new Actividad_Realizada(resultados.get(3), new GregorianCalendar(2016,9,3,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar8 = new Actividad_Realizada(resultados.get(3), new GregorianCalendar(2016,10,13,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar9 = new Actividad_Realizada(resultados.get(4), new GregorianCalendar(2016,4,30,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar10 = new Actividad_Realizada(resultados.get(4), new GregorianCalendar(2016,8,3,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar11 = new Actividad_Realizada(resultados.get(5), new GregorianCalendar(2016,3,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar12 = new Actividad_Realizada(resultados.get(5), new GregorianCalendar(2016,9,4,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar13 = new Actividad_Realizada(resultados.get(6), new GregorianCalendar(2016,9,6,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar14 = new Actividad_Realizada(resultados.get(6), new GregorianCalendar(2016,2,3,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar15 = new Actividad_Realizada(resultados.get(7), new GregorianCalendar(2016,7,31,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar16 = new Actividad_Realizada(resultados.get(7), new GregorianCalendar(2016,2,4,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar17 = new Actividad_Realizada(resultados.get(8), new GregorianCalendar(2016,11,19,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar18 = new Actividad_Realizada(resultados.get(8), new GregorianCalendar(2016,0,6,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar19 = new Actividad_Realizada(resultados.get(9), new GregorianCalendar(2016,2,28,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+		ar20 = new Actividad_Realizada(resultados.get(9), new GregorianCalendar(2016,6,24,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 
 	}
 	

@@ -255,7 +255,11 @@ public class TestConsultasDB {
 		String jpql = "SELECT u FROM Usuario u"; 
 		Query query = emanager.createQuery(jpql); 
 		List<Usuario> resultados = query.getResultList();
-		assertEquals(resultados, usuarios);
+		System.out.println(usuarios.size());
+		System.out.println(resultados);
+		for (int i = 0; i < resultados.size(); i++) {
+			assertEquals(usuarios.get(i), resultados.get(i));
+		}
 		
 	}
 	

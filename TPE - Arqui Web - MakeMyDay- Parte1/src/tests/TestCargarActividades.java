@@ -4,10 +4,12 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import org.junit.*;
 
@@ -41,13 +43,17 @@ public class TestCargarActividades {
 	public void inicializacion() {
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 		
-		//tipos
-		outdoor = new Tipo_Actividad("outdoor");
-		indoor = new Tipo_Actividad("indoor");
-		academico = new Tipo_Actividad("academico");
-		deporte = new Tipo_Actividad("deporte");
-		ocio = new Tipo_Actividad("ocio");
-
+		emanager = emfactory.createEntityManager();
+		String jpql = "SELECT t FROM Tipo_Actividad t"; 
+		Query query = emanager.createQuery(jpql); 
+		List<Tipo_Actividad> resultados = query.getResultList();
+		
+		outdoor = resultados.get(0);
+		indoor = resultados.get(1);
+		academico = resultados.get(2);
+		deporte = resultados.get(3);
+		ocio = resultados.get(4);
+		
 		//actividades
 		a1 = new Actividad("Cazar Pokemon", new ArrayList<Tipo_Actividad>(){{
 			add(ocio);
