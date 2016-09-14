@@ -2,6 +2,7 @@ package entidades;
 
 import java.util.GregorianCalendar;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,7 @@ public class Actividad_Realizada {
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private int id_actividad_realizada;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn
 	private Actividad actividad;
 	@Column(nullable = false)
