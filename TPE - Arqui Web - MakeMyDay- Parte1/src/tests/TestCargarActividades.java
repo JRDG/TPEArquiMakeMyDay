@@ -39,10 +39,21 @@ public class TestCargarActividades {
 	static Actividad a9;
 	static Actividad a10;
 	
+	
+	@Before
+	public void Before(){
+		emanager = emfactory.createEntityManager();
+	}
+	@After
+	public void After(){
+		if (emanager != null){
+			emanager.close();
+		}	
+	}
+	
 	@BeforeClass
 	public static void inicializacion() {
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
-		
 		emanager = emfactory.createEntityManager();
 		String jpql = "SELECT t FROM Tipo_Actividad t"; 
 		Query query = emanager.createQuery(jpql); 
@@ -100,7 +111,6 @@ public class TestCargarActividades {
 	
 	@Test
 	public void testCargarActividades() {
-		emanager = emfactory.createEntityManager();
 		emanager.getTransaction().begin();
 		emanager.persist(a1);
 		emanager.persist(a2);
@@ -113,9 +123,6 @@ public class TestCargarActividades {
 		emanager.persist(a9);
 		emanager.persist(a10);
 		emanager.getTransaction().commit();
-		if (emanager != null){
-			emanager.close();
-		}	
 	}
 	
 	@AfterClass

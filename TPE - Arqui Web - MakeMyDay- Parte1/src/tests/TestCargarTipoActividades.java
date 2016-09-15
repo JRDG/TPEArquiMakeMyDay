@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.junit.Test;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -23,7 +24,20 @@ public class TestCargarTipoActividades {
 	static Tipo_Actividad academico;
 	static Tipo_Actividad deporte;
 	static Tipo_Actividad ocio;
+
 	
+	
+	@Before
+	public void Before(){
+		emanager = emfactory.createEntityManager();
+	}
+	@After
+	public void After(){
+		if (emanager != null){
+			emanager.close();
+		}	
+	}
+
 	@BeforeClass
 	public static void init(){
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
@@ -38,15 +52,12 @@ public class TestCargarTipoActividades {
 	
 	@Test
 	public void test() {
-		emanager = emfactory.createEntityManager();
-		emanager.getTransaction().begin();
-		
+		emanager.getTransaction().begin();		
+		emanager.persist(outdoor);
 		emanager.persist(indoor);
 		emanager.persist(academico);
-		emanager.persist(ocio);
-		emanager.persist(outdoor);
 		emanager.persist(deporte);
-		
+		emanager.persist(ocio);
 		emanager.getTransaction().commit();
 	}
 	

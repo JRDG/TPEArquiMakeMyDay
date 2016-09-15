@@ -51,10 +51,19 @@ public class TestCargarUsuario {
 		
 	}		
 	
+	@Before
+	public void Before(){
+		emanager = emfactory.createEntityManager();
+	}
+	@After
+	public void After(){
+		if (emanager != null){
+			emanager.close();
+		}	
+	}
 
 	@Test
 	public void testCargarUsuarios() {
-		emanager = emfactory.createEntityManager();
 		emanager.getTransaction().begin();
 		emanager.persist(joa);
 		emanager.persist(san);
@@ -67,9 +76,6 @@ public class TestCargarUsuario {
 		emanager.persist(juan);
 		emanager.persist(cue);
 		emanager.getTransaction().commit();
-		if (emanager != null){
-			emanager.close();
-		}	
 	}	
 	
 	@AfterClass

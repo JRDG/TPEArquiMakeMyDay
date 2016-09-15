@@ -45,12 +45,23 @@ public class TestCargarHistoriales {
 	static Historial_Usuario h19;
 	static Historial_Usuario h20;
 
+	
+	@Before
+	public void Before(){
+		emanager = emfactory.createEntityManager();
+	}
+	@After
+	public void After(){
+		if (emanager != null){
+			emanager.close();
+		}	
+	}
+
 	@BeforeClass
 	public static void inicializacion(){
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
-				
+		emanager = emfactory.createEntityManager();				
 		//usuarios
-		emanager = emfactory.createEntityManager();
 		String jpql = "SELECT u FROM Usuario u WHERE u.nombre = ?1"; 
 		Query query = emanager.createQuery(jpql).setParameter(1, "tar"); 
 		List<Usuario> resultados = query.getResultList();
@@ -124,7 +135,6 @@ public class TestCargarHistoriales {
 		
 	@Test
 	public void testCargarHistoriales() {
-		emanager = emfactory.createEntityManager();
 		emanager.getTransaction().begin();
 		emanager.persist(h1);
 		emanager.persist(h2);
@@ -147,9 +157,6 @@ public class TestCargarHistoriales {
 		emanager.persist(h19);
 		emanager.persist(h20);
 		emanager.getTransaction().commit();
-		if (emanager != null){
-			emanager.close();
-		}	
 	}	
 	
 	@AfterClass

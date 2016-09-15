@@ -108,10 +108,25 @@ public class TestConsultasDB {
 	static	Historial_Usuario h18;
 	static	Historial_Usuario h19;
 	static	Historial_Usuario h20;
+
 	
+//	@Before
+//	public void Before(){
+//		emanager = emfactory.createEntityManager();
+//		System.out.println("Beforeeeeee");
+//	}
+//	@After
+//	public void After(){
+//		if (emanager != null){
+//			emanager.close();
+//			System.out.println("Afterrrrrrr");
+//		}	
+//	}
+
 	@BeforeClass
 	public static void inicializacion(){
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
+		
 				//usuarios
 				joa = new Usuario("Joa","Quin",35647897,new GregorianCalendar(1994,7,25) ,"2567");
 				san = new Usuario("San","Tiago",38838109,new GregorianCalendar(1995,7,25) ,"2567");
@@ -295,23 +310,32 @@ public class TestConsultasDB {
 	
 	@Test
 	public void ListarUsuarios(){
+		System.out.println("ListarUsuarios");
 		emanager = emfactory.createEntityManager();
+		emanager.getTransaction().begin();
 		String jpql = "SELECT u FROM Usuario u"; 
 		Query query = emanager.createQuery(jpql); 
 		List<Usuario> resultados = query.getResultList();
 		assertEquals(usuarios, resultados);
 	}
 	
+	@Test
 	public void Listar_Actividades(){
-	    emanager = emfactory.createEntityManager();
+		System.out.println("Listar_Actividades");
+		emanager = emfactory.createEntityManager();
+		emanager.getTransaction().begin();
 		String jpql = "SELECT a FROM Actividad a"; 
 		Query query = emanager.createQuery(jpql); 
 		List<Actividad> resultados = query.getResultList();
+		System.out.println(resultados.size());
 		assertEquals(actividades, resultados);
 	}
 	
+	@Test
 	public void ListarActividadesEntreFechas(){
+		System.out.println("ListarActividadesEntreFechas");
 		emanager = emfactory.createEntityManager();
+		emanager.getTransaction().begin();
 		String usuario = "tar";
 		Calendar fecha1 = new GregorianCalendar(2015,7,1);
 		Calendar fecha2 = new GregorianCalendar(2016,4,30);
@@ -321,8 +345,11 @@ public class TestConsultasDB {
 		assertEquals(actividadesEntreFechas, resultados);
 	}
 	
+	@Test
 	public void ObtenerEstadisticas(){
+		System.out.println("ObtenerEstadisticas");
 		emanager = emfactory.createEntityManager();
+		emanager.getTransaction().begin();
 		String jpql = "SELECT AVG(h.nivelFelicidad), MIN(h.nivelFelicidad), MAX(h.nivelFelicidad) FROM Historial_Usuario h WHERE h.usuario.DNI LIKE ?1"; 
 		Query query = emanager.createQuery(jpql).setParameter(1, 3); 
 		List<Object[]> resultados = query.getResultList();
@@ -336,8 +363,7 @@ public class TestConsultasDB {
 	@AfterClass
 	public static void cerrarFactoryYEliminarTablas(){
 		emanager = emfactory.createEntityManager();
-		emanager.getTransaction().begin();	
-		
+		emanager.getTransaction().begin();
 		String jpql1 = "SELECT CONCAT('alter table ',table_name,' drop foreign key ', constraint_name,';') FROM information_schema.key_column_usage WHERE table_schema = 'makemyday' and not (constraint_name like 'primary');";
 		String jpql2 = "SELECT CONCAT('drop table ',table_name,'; ') FROM information_schema.tables WHERE table_schema = 'makemyday';"; 		    
 	 
@@ -359,14 +385,10 @@ public class TestConsultasDB {
 		Query qAux = emanager.createNativeQuery(r);  
 			qAux.executeUpdate();
 		}
-		if (emanager != null){
-			emanager.close();
-		}
 		if (emfactory != null){
 			emfactory.close();
 		}
 		
 	}
 
-	
 }
