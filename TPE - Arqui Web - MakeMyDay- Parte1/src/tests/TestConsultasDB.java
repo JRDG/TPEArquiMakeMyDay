@@ -29,8 +29,24 @@ public class TestConsultasDB {
 	EntityManager emanager;
 	ArrayList usuarios;
 	ArrayList actividades;
+	ArrayList estadisticas;
+	ArrayList actividadesEntreFechas;
+	double min;
+	double max;
+	double avg;
 	
-	/*
+	
+	Usuario joa;
+	Usuario san;
+	Usuario vic;
+	Usuario pe;
+	Usuario tar;
+	Usuario ku;
+	Usuario yo;
+	Usuario dar;
+	Usuario juan;
+	Usuario cue;
+	
 	Tipo_Actividad outdoor;
 	Tipo_Actividad indoor;
 	Tipo_Actividad academico;
@@ -89,26 +105,34 @@ public class TestConsultasDB {
 	Historial_Usuario h18;
 	Historial_Usuario h19;
 	Historial_Usuario h20;
-	*/
+	
 	@Before
 	public void inicializacion(){
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 				//usuarios
-				usuarios = new ArrayList<Usuario>(){{
-					add(new Usuario("Joa","Quin",35647897,new GregorianCalendar(1994,7,25) ,"2567"));
-					add(new Usuario("San","Tiago",38838109,new GregorianCalendar(1995,7,25) ,"2567"));
-					add(new Usuario("Vic","Tor",58938019,new GregorianCalendar(1985,7,25) ,"2567"));
-					add(new Usuario("Pe","Tuto",38698719,new GregorianCalendar(1955,7,25) ,"2567"));
-					add(new Usuario("Tar","ton",3,new GregorianCalendar(1095,7,25) ,"2567"));
-					add(new Usuario("Ku","Be",35585462,new GregorianCalendar(1995,9,5) ,"2567"));
-					add(new Usuario("Yo","Landa",49836019,new GregorianCalendar(1895,7,25) ,"2567"));
-					add(new Usuario("Dar","do",38999019,new GregorianCalendar(1999,7,25) ,"2567"));
-					add(new Usuario("Juan","Se",38838019,new GregorianCalendar(1998,7,25) ,"2567"));
-					add(new Usuario("Cue","Li",39874519,new GregorianCalendar(1997,7,25) ,"2567"));
-				}};
-
+				joa = new Usuario("Joa","Quin",35647897,new GregorianCalendar(1994,7,25) ,"2567");
+				san = new Usuario("San","Tiago",38838109,new GregorianCalendar(1995,7,25) ,"2567");
+				vic = new Usuario("Vic","Tor",58938019,new GregorianCalendar(1985,7,25) ,"2567");
+				pe = new Usuario("Pe","Tuto",38698719,new GregorianCalendar(1955,7,25) ,"2567");
+				tar = new Usuario("Tar","ton",3,new GregorianCalendar(1095,7,25) ,"2567");
+				ku = new Usuario("Ku","Be",35585462,new GregorianCalendar(1995,9,5) ,"2567");
+				yo = new Usuario("Yo","Landa",49836019,new GregorianCalendar(1895,7,25) ,"2567");
+				dar = new Usuario("Dar","do",38999019,new GregorianCalendar(1999,7,25) ,"2567");
+				juan = new Usuario("Juan","Se",38838019,new GregorianCalendar(1998,7,25) ,"2567");
+				cue = new Usuario("Cue","Li",39874519,new GregorianCalendar(1997,7,25) ,"2567");
+				usuarios = new ArrayList<Usuario>();
+				usuarios.add(joa);
+				usuarios.add(san);
+				usuarios.add(vic);
+				usuarios.add(pe);
+				usuarios.add(tar);
+				usuarios.add(ku);
+				usuarios.add(yo);
+				usuarios.add(dar);
+				usuarios.add(juan);
+				usuarios.add(cue);
 				//para los distintos tests
-				/*
+				
 				//tipos
 				outdoor = new Tipo_Actividad("outdoor");
 				indoor = new Tipo_Actividad("indoor");
@@ -160,7 +184,18 @@ public class TestConsultasDB {
 					add(outdoor);
 					add(deporte);
 				}});
-
+				actividades = new ArrayList<Actividad>();
+				actividades.add(a1);
+				actividades.add(a2);
+				actividades.add(a3);
+				actividades.add(a4);
+				actividades.add(a5);
+				actividades.add(a6);
+				actividades.add(a7);
+				actividades.add(a8);
+				actividades.add(a9);
+				actividades.add(a10);
+				
 
 
 				//actividades realizadas
@@ -246,7 +281,13 @@ public class TestConsultasDB {
 				h20 = new Historial_Usuario(tar, ar20);
 				h20.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h20.setNivelFelicidad(5);
-		*/
+				
+				min = 1;
+				max = 5;
+				avg = 3.2;
+				
+				actividadesEntreFechas = new ArrayList<Actividad_Realizada>();
+				actividadesEntreFechas.add(ar2);
 		}
 	
 	@Test
@@ -255,14 +296,38 @@ public class TestConsultasDB {
 		String jpql = "SELECT u FROM Usuario u"; 
 		Query query = emanager.createQuery(jpql); 
 		List<Usuario> resultados = query.getResultList();
-		System.out.println(usuarios.size());
-		System.out.println(resultados);
-		for (int i = 0; i < resultados.size(); i++) {
-			assertEquals(usuarios.get(i), resultados.get(i));
-		}
-		
+		assertEquals(usuarios, resultados);
 	}
 	
+	public void Listar_Actividades(){
+	    emanager = emfactory.createEntityManager();
+		String jpql = "SELECT a FROM Actividad a"; 
+		Query query = emanager.createQuery(jpql); 
+		List<Actividad> resultados = query.getResultList();
+		assertEquals(actividades, resultados);
+	}
+	
+	public void ListarActividadesEntreFechas(){
+		emanager = emfactory.createEntityManager();
+		String usuario = "tar";
+		Calendar fecha1 = new GregorianCalendar(2015,7,1);
+		Calendar fecha2 = new GregorianCalendar(2016,4,30);
+		String jpql = "SELECT h.actividad FROM Historial_Usuario h WHERE h.usuario.nombre = ?1 AND (h.actividad.fecha_realizada > ?2 AND h.fecha_fin < ?3)"; 
+		Query query = emanager.createQuery(jpql).setParameter(1, usuario).setParameter(2,fecha1).setParameter(3,fecha2); 
+		List<Actividad_Realizada> resultados = query.getResultList();
+		assertEquals(actividadesEntreFechas, resultados);
+	}
+	
+	public void ObtenerEstadisticas(){
+		emanager = emfactory.createEntityManager();
+		String jpql = "SELECT AVG(h.nivelFelicidad), MIN(h.nivelFelicidad), MAX(h.nivelFelicidad) FROM Historial_Usuario h WHERE h.usuario.DNI LIKE ?1"; 
+		Query query = emanager.createQuery(jpql).setParameter(1, 3); 
+		List<Object[]> resultados = query.getResultList();
+		
+		assertEquals((Double)resultados.get(0)[0], avg,1e-6);
+		assertEquals((Double)resultados.get(0)[1], min,1e-6);
+		assertEquals((Double)resultados.get(0)[2], max,1e-6);
+	}
 	
 	
 	@After
