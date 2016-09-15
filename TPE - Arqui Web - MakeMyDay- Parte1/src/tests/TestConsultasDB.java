@@ -29,6 +29,7 @@ public class TestConsultasDB {
 
 	private static EntityManagerFactory emfactory;
 	private static EntityManager emanager;
+	
 	static 	ArrayList usuarios;
 	static 	ArrayList actividades;
 	static 	ArrayList estadisticas;

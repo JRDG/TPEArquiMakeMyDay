@@ -19,8 +19,8 @@ import entidades.Usuario;
 
 public class TestCargarActividades {
 
-	static EntityManagerFactory emfactory;
-	static EntityManager emanager;
+	private static EntityManagerFactory emfactory;
+	private static EntityManager emanager;
 	
 	static Tipo_Actividad outdoor;
 	static Tipo_Actividad indoor;

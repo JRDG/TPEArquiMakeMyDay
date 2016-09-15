@@ -17,6 +17,7 @@ public class TestCargarTipoActividades {
 
 	private static EntityManagerFactory emfactory;
 	private EntityManager emanager;
+	
 	static Tipo_Actividad outdoor;
 	static Tipo_Actividad indoor;
 	static Tipo_Actividad academico;
