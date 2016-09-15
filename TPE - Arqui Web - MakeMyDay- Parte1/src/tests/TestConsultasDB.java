@@ -13,7 +13,9 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import entidades.Actividad;
@@ -106,7 +108,7 @@ public class TestConsultasDB {
 	Historial_Usuario h19;
 	Historial_Usuario h20;
 	
-	@Before
+	@BeforeClass
 	public void inicializacion(){
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 				//usuarios
@@ -330,7 +332,7 @@ public class TestConsultasDB {
 	}
 	
 	
-	@After
+	@AfterClass
 	public void cerrarFactoryYEliminarTablas(){
 		emanager = emfactory.createEntityManager();
 		emanager.getTransaction().begin();	

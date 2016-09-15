@@ -39,7 +39,7 @@ public class TestCargarActividades {
 	Actividad a9;
 	Actividad a10;
 	
-	@Before
+	@BeforeClass
 	public void inicializacion() {
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 		
@@ -118,7 +118,7 @@ public class TestCargarActividades {
 		}	
 	}
 	
-	@After
+	@AfterClass
 	public void cerrarFactory(){
 		if (emfactory != null){
 			emfactory.close();

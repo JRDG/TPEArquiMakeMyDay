@@ -9,7 +9,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import entidades.Usuario;
@@ -31,7 +33,7 @@ public class TestCargarUsuario {
 	Usuario cue;
 	
 
-	@Before
+	@BeforeClass
 	public void inicializacion(){
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 				
@@ -70,7 +72,7 @@ public class TestCargarUsuario {
 		}	
 	}	
 	
-	@After
+	@AfterClass
 	public void cerrarFactory(){
 		if (emfactory != null){
 			emfactory.close();

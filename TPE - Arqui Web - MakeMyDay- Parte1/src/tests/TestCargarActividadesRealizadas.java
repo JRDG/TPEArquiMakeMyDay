@@ -13,7 +13,9 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import entidades.Actividad;
@@ -47,7 +49,7 @@ public class TestCargarActividadesRealizadas {
 	Actividad_Realizada ar20;
 	
 	
-	@Before
+	@BeforeClass
 	public void inicializacion(){
 		
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
@@ -111,7 +113,7 @@ public class TestCargarActividadesRealizadas {
 		}	
 	}
 	
-	@After
+	@AfterClass
 	public void cerrarFactory(){
 		if (emfactory != null){
 			emfactory.close();

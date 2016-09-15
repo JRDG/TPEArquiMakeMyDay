@@ -45,7 +45,7 @@ public class TestCargarHistoriales {
 	Historial_Usuario h19;
 	Historial_Usuario h20;
 
-	@Before
+	@BeforeClass
 	public void inicializacion(){
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 				
@@ -152,7 +152,7 @@ public class TestCargarHistoriales {
 		}	
 	}	
 	
-	@After
+	@AfterClass
 	public void cerrarFactory(){
 		if (emfactory != null){
 			emfactory.close();
