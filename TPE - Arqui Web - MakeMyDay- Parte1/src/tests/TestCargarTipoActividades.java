@@ -15,16 +15,16 @@ import entidades.Tipo_Actividad;
 
 public class TestCargarTipoActividades {
 
-	private EntityManagerFactory emfactory;
+	private static EntityManagerFactory emfactory;
 	private EntityManager emanager;
-	Tipo_Actividad outdoor;
-	Tipo_Actividad indoor;
-	Tipo_Actividad academico;
-	Tipo_Actividad deporte;
-	Tipo_Actividad ocio;
+	static Tipo_Actividad outdoor;
+	static Tipo_Actividad indoor;
+	static Tipo_Actividad academico;
+	static Tipo_Actividad deporte;
+	static Tipo_Actividad ocio;
 	
 	@BeforeClass
-	public void init(){
+	public static void init(){
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 		
 		outdoor = new Tipo_Actividad("outdoor");
@@ -51,7 +51,7 @@ public class TestCargarTipoActividades {
 	
 	
 	@AfterClass
-	public void cerrarFactory(){
+	public static void cerrarFactory(){
 		if (emfactory != null){
 			emfactory.close();
 		}	

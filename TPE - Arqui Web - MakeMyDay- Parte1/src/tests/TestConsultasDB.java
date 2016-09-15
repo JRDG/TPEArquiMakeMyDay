@@ -27,89 +27,89 @@ import utils.Servicios;
 
 public class TestConsultasDB {
 
-	EntityManagerFactory emfactory;
-	EntityManager emanager;
-	ArrayList usuarios;
-	ArrayList actividades;
-	ArrayList estadisticas;
-	ArrayList actividadesEntreFechas;
-	double min;
-	double max;
-	double avg;
+	private static EntityManagerFactory emfactory;
+	private static EntityManager emanager;
+	static 	ArrayList usuarios;
+	static 	ArrayList actividades;
+	static 	ArrayList estadisticas;
+	static 	ArrayList actividadesEntreFechas;
+	static 	double min;
+	static 	double max;
+	static 	double avg;
 	
 	
-	Usuario joa;
-	Usuario san;
-	Usuario vic;
-	Usuario pe;
-	Usuario tar;
-	Usuario ku;
-	Usuario yo;
-	Usuario dar;
-	Usuario juan;
-	Usuario cue;
+	static 	Usuario joa;
+	static 	Usuario san;
+	static 	Usuario vic;
+	static 	Usuario pe;
+	static 	Usuario tar;
+	static 	Usuario ku;
+	static 	Usuario yo;
+	static 	Usuario dar;
+	static	Usuario juan;
+	static 	Usuario cue;
 	
-	Tipo_Actividad outdoor;
-	Tipo_Actividad indoor;
-	Tipo_Actividad academico;
-	Tipo_Actividad deporte;
-	Tipo_Actividad ocio;
+	static 	Tipo_Actividad outdoor;
+	static	Tipo_Actividad indoor;
+	static 	Tipo_Actividad academico;
+	static 	Tipo_Actividad deporte;
+	static 	Tipo_Actividad ocio;
 	
-	Actividad a1;
-	Actividad a2;
-	Actividad a3;
-	Actividad a4;
-	Actividad a5;
-	Actividad a6;
-	Actividad a7;
-	Actividad a8;
-	Actividad a9;
-	Actividad a10;
+	static 	Actividad a1;
+	static 	Actividad a2;
+	static 	Actividad a3;
+	static 	Actividad a4;
+	static 	Actividad a5;
+	static 	Actividad a6;
+	static 	Actividad a7;
+	static 	Actividad a8;
+	static 	Actividad a9;
+	static 	Actividad a10;
 	
-	Actividad_Realizada ar1;
-	Actividad_Realizada ar2;
-	Actividad_Realizada ar3;
-	Actividad_Realizada ar4;
-	Actividad_Realizada ar5;
-	Actividad_Realizada ar6;
-	Actividad_Realizada ar7;
-	Actividad_Realizada ar8;
-	Actividad_Realizada ar9;
-	Actividad_Realizada ar10;
-	Actividad_Realizada ar11;
-	Actividad_Realizada ar12;
-	Actividad_Realizada ar13;
-	Actividad_Realizada ar14;
-	Actividad_Realizada ar15;
-	Actividad_Realizada ar16;
-	Actividad_Realizada ar17;
-	Actividad_Realizada ar18;
-	Actividad_Realizada ar19;
-	Actividad_Realizada ar20;
+	static 	Actividad_Realizada ar1;
+	static 	Actividad_Realizada ar2;
+	static 	Actividad_Realizada ar3;
+	static 	Actividad_Realizada ar4;
+	static 	Actividad_Realizada ar5;
+	static 	Actividad_Realizada ar6;
+	static 	Actividad_Realizada ar7;
+	static 	Actividad_Realizada ar8;
+	static 	Actividad_Realizada ar9;
+	static 	Actividad_Realizada ar10;
+	static 	Actividad_Realizada ar11;
+	static 	Actividad_Realizada ar12;
+	static 	Actividad_Realizada ar13;
+	static 	Actividad_Realizada ar14;
+	static 	Actividad_Realizada ar15;
+	static 	Actividad_Realizada ar16;
+	static 	Actividad_Realizada ar17;
+	static 	Actividad_Realizada ar18;
+	static 	Actividad_Realizada ar19;
+	static 	Actividad_Realizada ar20;
 	
-	Historial_Usuario h1;
-	Historial_Usuario h2;
-	Historial_Usuario h3;
-	Historial_Usuario h4;
-	Historial_Usuario h5;
-	Historial_Usuario h6;
-	Historial_Usuario h7;
-	Historial_Usuario h8;
-	Historial_Usuario h9;
-	Historial_Usuario h10;
-	Historial_Usuario h11;
-	Historial_Usuario h12;
-	Historial_Usuario h13;
-	Historial_Usuario h14;
-	Historial_Usuario h15;
-	Historial_Usuario h16;
-	Historial_Usuario h17;
-	Historial_Usuario h18;
-	Historial_Usuario h19;
-	Historial_Usuario h20;
+	static 	Historial_Usuario h1;
+	static 	Historial_Usuario h2;
+	static 	Historial_Usuario h3;
+	static 	Historial_Usuario h4;
+	static 	Historial_Usuario h5;
+	static 	Historial_Usuario h6;
+	static 	Historial_Usuario h7;
+	static 	Historial_Usuario h8;
+	static 	Historial_Usuario h9;
+	static 	Historial_Usuario h10;
+	static	Historial_Usuario h11;
+	static 	Historial_Usuario h12;
+	static 	Historial_Usuario h13;
+	static 	Historial_Usuario h14;
+	static	Historial_Usuario h15;
+	static 	Historial_Usuario h16;
+	static	Historial_Usuario h17;
+	static	Historial_Usuario h18;
+	static	Historial_Usuario h19;
+	static	Historial_Usuario h20;
 	
 	@BeforeClass
-	public void inicializacion(){
+	public static void inicializacion(){
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 				//usuarios
 				joa = new Usuario("Joa","Quin",35647897,new GregorianCalendar(1994,7,25) ,"2567");
@@ -333,7 +333,7 @@ public class TestConsultasDB {
 	
 	
 	@AfterClass
-	public void cerrarFactoryYEliminarTablas(){
+	public static void cerrarFactoryYEliminarTablas(){
 		emanager = emfactory.createEntityManager();
 		emanager.getTransaction().begin();	
 		

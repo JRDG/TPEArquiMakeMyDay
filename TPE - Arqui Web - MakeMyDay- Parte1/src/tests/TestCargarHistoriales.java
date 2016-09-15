@@ -19,34 +19,34 @@ import entidades.Usuario;
 
 public class TestCargarHistoriales {
 	
-	EntityManagerFactory emfactory;
-	EntityManager emanager;
+	private static EntityManagerFactory emfactory;
+	private static EntityManager emanager;
 	
-	Usuario tar;
+	static Usuario tar;
 
-	Historial_Usuario h1;
-	Historial_Usuario h2;
-	Historial_Usuario h3;
-	Historial_Usuario h4;
-	Historial_Usuario h5;
-	Historial_Usuario h6;
-	Historial_Usuario h7;
-	Historial_Usuario h8;
-	Historial_Usuario h9;
-	Historial_Usuario h10;
-	Historial_Usuario h11;
-	Historial_Usuario h12;
-	Historial_Usuario h13;
-	Historial_Usuario h14;
-	Historial_Usuario h15;
-	Historial_Usuario h16;
-	Historial_Usuario h17;
-	Historial_Usuario h18;
-	Historial_Usuario h19;
-	Historial_Usuario h20;
+	static Historial_Usuario h1;
+	static Historial_Usuario h2;
+	static Historial_Usuario h3;
+	static Historial_Usuario h4;
+	static Historial_Usuario h5;
+	static Historial_Usuario h6;
+	static Historial_Usuario h7;
+	static Historial_Usuario h8;
+	static Historial_Usuario h9;
+	static Historial_Usuario h10;
+	static Historial_Usuario h11;
+	static Historial_Usuario h12;
+	static Historial_Usuario h13;
+	static Historial_Usuario h14;
+	static Historial_Usuario h15;
+	static Historial_Usuario h16;
+	static Historial_Usuario h17;
+	static Historial_Usuario h18;
+	static Historial_Usuario h19;
+	static Historial_Usuario h20;
 
 	@BeforeClass
-	public void inicializacion(){
+	public static void inicializacion(){
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 				
 		//usuarios
@@ -153,7 +153,7 @@ public class TestCargarHistoriales {
 	}	
 	
 	@AfterClass
-	public void cerrarFactory(){
+	public static void cerrarFactory(){
 		if (emfactory != null){
 			emfactory.close();
 		}	

@@ -24,33 +24,33 @@ import entidades.Tipo_Actividad;
 
 public class TestCargarActividadesRealizadas {
 	
-	private EntityManagerFactory emfactory;
-	private EntityManager emanager;
+	private static EntityManagerFactory emfactory;
+	private static EntityManager emanager;
 	
-	Actividad_Realizada ar1;
-	Actividad_Realizada ar2;
-	Actividad_Realizada ar3;
-	Actividad_Realizada ar4;
-	Actividad_Realizada ar5;
-	Actividad_Realizada ar6;
-	Actividad_Realizada ar7;
-	Actividad_Realizada ar8;
-	Actividad_Realizada ar9;
-	Actividad_Realizada ar10;
-	Actividad_Realizada ar11;
-	Actividad_Realizada ar12;
-	Actividad_Realizada ar13;
-	Actividad_Realizada ar14;
-	Actividad_Realizada ar15;
-	Actividad_Realizada ar16;
-	Actividad_Realizada ar17;
-	Actividad_Realizada ar18;
-	Actividad_Realizada ar19;
-	Actividad_Realizada ar20;
+	static Actividad_Realizada ar1;
+	static Actividad_Realizada ar2;
+	static Actividad_Realizada ar3;
+	static Actividad_Realizada ar4;
+	static Actividad_Realizada ar5;
+	static Actividad_Realizada ar6;
+	static Actividad_Realizada ar7;
+	static Actividad_Realizada ar8;
+	static Actividad_Realizada ar9;
+	static Actividad_Realizada ar10;
+	static Actividad_Realizada ar11;
+	static Actividad_Realizada ar12;
+	static Actividad_Realizada ar13;
+	static Actividad_Realizada ar14;
+	static Actividad_Realizada ar15;
+	static Actividad_Realizada ar16;
+	static Actividad_Realizada ar17;
+	static Actividad_Realizada ar18;
+	static Actividad_Realizada ar19;
+	static Actividad_Realizada ar20;
 	
 	
 	@BeforeClass
-	public void inicializacion(){
+	public static void inicializacion(){
 		
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 
@@ -114,7 +114,7 @@ public class TestCargarActividadesRealizadas {
 	}
 	
 	@AfterClass
-	public void cerrarFactory(){
+	public static void cerrarFactory(){
 		if (emfactory != null){
 			emfactory.close();
 		}	

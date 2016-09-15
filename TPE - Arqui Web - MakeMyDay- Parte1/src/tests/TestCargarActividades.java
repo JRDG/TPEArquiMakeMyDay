@@ -19,28 +19,28 @@ import entidades.Usuario;
 
 public class TestCargarActividades {
 
-	EntityManagerFactory emfactory;
-	EntityManager emanager;
+	static EntityManagerFactory emfactory;
+	static EntityManager emanager;
 	
-	Tipo_Actividad outdoor;
-	Tipo_Actividad indoor;
-	Tipo_Actividad academico;
-	Tipo_Actividad deporte;
-	Tipo_Actividad ocio;
+	static Tipo_Actividad outdoor;
+	static Tipo_Actividad indoor;
+	static Tipo_Actividad academico;
+	static Tipo_Actividad deporte;
+	static Tipo_Actividad ocio;
 	
-	Actividad a1;
-	Actividad a2;
-	Actividad a3;
-	Actividad a4;
-	Actividad a5;
-	Actividad a6;
-	Actividad a7;
-	Actividad a8;
-	Actividad a9;
-	Actividad a10;
+	static Actividad a1;
+	static Actividad a2;
+	static Actividad a3;
+	static Actividad a4;
+	static Actividad a5;
+	static Actividad a6;
+	static Actividad a7;
+	static Actividad a8;
+	static Actividad a9;
+	static Actividad a10;
 	
 	@BeforeClass
-	public void inicializacion() {
+	public static void inicializacion() {
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 		
 		emanager = emfactory.createEntityManager();
@@ -119,7 +119,7 @@ public class TestCargarActividades {
 	}
 	
 	@AfterClass
-	public void cerrarFactory(){
+	public static void cerrarFactory(){
 		if (emfactory != null){
 			emfactory.close();
 		}	

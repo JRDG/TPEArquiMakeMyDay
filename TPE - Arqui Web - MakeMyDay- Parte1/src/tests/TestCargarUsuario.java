@@ -18,23 +18,23 @@ import entidades.Usuario;
 
 public class TestCargarUsuario {
 
-	private EntityManagerFactory emfactory;
+	private static EntityManagerFactory emfactory;
 	private EntityManager emanager;
 	
-	Usuario joa;
-	Usuario san;
-	Usuario vic;
-	Usuario pe;
-	Usuario tar;
-	Usuario ku;
-	Usuario yo;
-	Usuario dar;
-	Usuario juan;
-	Usuario cue;
+	static Usuario joa;
+	static Usuario san;
+	static Usuario vic;
+	static Usuario pe;
+	static Usuario tar;
+	static Usuario ku;
+	static Usuario yo;
+	static Usuario dar;
+	static Usuario juan;
+	static Usuario cue;
 	
 
 	@BeforeClass
-	public void inicializacion(){
+	public static void inicializacion(){
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 				
 		//usuarios
@@ -73,7 +73,7 @@ public class TestCargarUsuario {
 	}	
 	
 	@AfterClass
-	public void cerrarFactory(){
+	public static void cerrarFactory(){
 		if (emfactory != null){
 			emfactory.close();
 		}	
