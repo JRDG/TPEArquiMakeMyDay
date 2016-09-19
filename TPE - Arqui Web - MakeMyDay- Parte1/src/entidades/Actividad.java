@@ -3,9 +3,7 @@ package entidades;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,10 +12,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
-import org.eclipse.persistence.jpa.config.Cascade;
 
 @Entity
+@Table(name = "Actividad")
+/**
+ * Creara las instancias de las actividades que podra realizar un usuario con su informacion correspondiente
+ * @author Gonzales Victor Juan, Rodriguez Joaquin, Nosei Santiago
+ *
+ */
 public class Actividad {
 
 	@Id
@@ -29,13 +33,21 @@ public class Actividad {
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinColumn
-	private ArrayList<Tipo_Actividad> ListadeTipo;
+	private ArrayList<TipoActividad> ListadeTipo;
 
+	/**
+	 * Constructor de clase por defecto
+	 */
 	public Actividad() {
-		ListadeTipo = new ArrayList<Tipo_Actividad>();
+		ListadeTipo = new ArrayList<TipoActividad>();
 	}
 
-	public Actividad(String nombre, ArrayList<Tipo_Actividad> listadeTipo) {
+	/**
+	 * Constructor de clase con parametros para instanciar las actividades
+	 * @param nombre Sera el nombre que mantendra la actividad en el sistema
+	 * @param listadeTipo Sera una lista de tipos de actividades para la actividad asociada
+	 */
+	public Actividad(String nombre, ArrayList<TipoActividad> listadeTipo) {
 		this.nombre = nombre;
 		ListadeTipo = listadeTipo;
 	}
@@ -44,8 +56,8 @@ public class Actividad {
 		return nombre;
 	}
 
-	public ArrayList<Tipo_Actividad> getListadeTipo() {
-		return (ArrayList<Tipo_Actividad>) ListadeTipo;
+	public ArrayList<TipoActividad> getListadeTipo() {
+		return (ArrayList<TipoActividad>) ListadeTipo;
 	}
 
 	@Override
@@ -62,16 +74,12 @@ public class Actividad {
 		if (getClass() != obj.getClass())
 			return false;
 		Actividad other = (Actividad) obj;
-		System.out.println(obj.toString());
-		System.out.println(this.toString());
-		ArrayList<Tipo_Actividad> otra = new ArrayList<Tipo_Actividad>();
-		otra.addAll(other.getListadeTipo());
-		Collections.sort(otra);
+		Collections.sort(other.getListadeTipo());
 		Collections.sort(ListadeTipo);
 		if (ListadeTipo == null) {
-			if (otra != null)
+			if (other.getListadeTipo() != null)
 				return false;
-		} else if (!ListadeTipo.equals(otra))
+		} else if (!ListadeTipo.equals(other.getListadeTipo()))
 			return false;
 		if (nombre == null) {
 			if (other.nombre != null)

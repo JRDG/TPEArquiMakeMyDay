@@ -1,36 +1,28 @@
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import entidades.Actividad;
-import entidades.Actividad_Realizada;
-import entidades.Historial_Usuario;
-import entidades.Tipo_Actividad;
+import entidades.ActividadRealizada;
+import entidades.HistorialUsuario;
+import entidades.TipoActividad;
 import entidades.Usuario;
 import utils.ConsultasUtil;
 
 public class TestConsultasDB {
 	static ConsultasUtil s;
-	static 	ArrayList usuarios;
-	static 	ArrayList actividades;
-	static 	ArrayList estadisticas;
-	static 	ArrayList actividadesEntreFechas;
+	static 	ArrayList<Usuario> usuarios;
+	static 	ArrayList<Actividad> actividades;
+	static 	ArrayList<Double> estadisticas;
+	static 	ArrayList<ActividadRealizada> actividadesEntreFechas;
 	static 	double min;
 	static 	double max;
 	static 	double avg;
@@ -47,11 +39,11 @@ public class TestConsultasDB {
 	static	Usuario juan;
 	static 	Usuario cue;
 	
-	static 	Tipo_Actividad outdoor;
-	static	Tipo_Actividad indoor;
-	static 	Tipo_Actividad academico;
-	static 	Tipo_Actividad deporte;
-	static 	Tipo_Actividad ocio;
+	static 	TipoActividad outdoor;
+	static	TipoActividad indoor;
+	static 	TipoActividad academico;
+	static 	TipoActividad deporte;
+	static 	TipoActividad ocio;
 	
 	static 	Actividad a1;
 	static 	Actividad a2;
@@ -64,47 +56,47 @@ public class TestConsultasDB {
 	static 	Actividad a9;
 	static 	Actividad a10;
 	
-	static 	Actividad_Realizada ar1;
-	static 	Actividad_Realizada ar2;
-	static 	Actividad_Realizada ar3;
-	static 	Actividad_Realizada ar4;
-	static 	Actividad_Realizada ar5;
-	static 	Actividad_Realizada ar6;
-	static 	Actividad_Realizada ar7;
-	static 	Actividad_Realizada ar8;
-	static 	Actividad_Realizada ar9;
-	static 	Actividad_Realizada ar10;
-	static 	Actividad_Realizada ar11;
-	static 	Actividad_Realizada ar12;
-	static 	Actividad_Realizada ar13;
-	static 	Actividad_Realizada ar14;
-	static 	Actividad_Realizada ar15;
-	static 	Actividad_Realizada ar16;
-	static 	Actividad_Realizada ar17;
-	static 	Actividad_Realizada ar18;
-	static 	Actividad_Realizada ar19;
-	static 	Actividad_Realizada ar20;
+	static 	ActividadRealizada ar1;
+	static 	ActividadRealizada ar2;
+	static 	ActividadRealizada ar3;
+	static 	ActividadRealizada ar4;
+	static 	ActividadRealizada ar5;
+	static 	ActividadRealizada ar6;
+	static 	ActividadRealizada ar7;
+	static 	ActividadRealizada ar8;
+	static 	ActividadRealizada ar9;
+	static 	ActividadRealizada ar10;
+	static 	ActividadRealizada ar11;
+	static 	ActividadRealizada ar12;
+	static 	ActividadRealizada ar13;
+	static 	ActividadRealizada ar14;
+	static 	ActividadRealizada ar15;
+	static 	ActividadRealizada ar16;
+	static 	ActividadRealizada ar17;
+	static 	ActividadRealizada ar18;
+	static 	ActividadRealizada ar19;
+	static 	ActividadRealizada ar20;
 	
-	static 	Historial_Usuario h1;
-	static 	Historial_Usuario h2;
-	static 	Historial_Usuario h3;
-	static 	Historial_Usuario h4;
-	static 	Historial_Usuario h5;
-	static 	Historial_Usuario h6;
-	static 	Historial_Usuario h7;
-	static 	Historial_Usuario h8;
-	static 	Historial_Usuario h9;
-	static 	Historial_Usuario h10;
-	static	Historial_Usuario h11;
-	static 	Historial_Usuario h12;
-	static 	Historial_Usuario h13;
-	static 	Historial_Usuario h14;
-	static	Historial_Usuario h15;
-	static 	Historial_Usuario h16;
-	static	Historial_Usuario h17;
-	static	Historial_Usuario h18;
-	static	Historial_Usuario h19;
-	static	Historial_Usuario h20;
+	static 	HistorialUsuario h1;
+	static 	HistorialUsuario h2;
+	static 	HistorialUsuario h3;
+	static 	HistorialUsuario h4;
+	static 	HistorialUsuario h5;
+	static 	HistorialUsuario h6;
+	static 	HistorialUsuario h7;
+	static 	HistorialUsuario h8;
+	static 	HistorialUsuario h9;
+	static 	HistorialUsuario h10;
+	static	HistorialUsuario h11;
+	static 	HistorialUsuario h12;
+	static 	HistorialUsuario h13;
+	static 	HistorialUsuario h14;
+	static	HistorialUsuario h15;
+	static 	HistorialUsuario h16;
+	static	HistorialUsuario h17;
+	static	HistorialUsuario h18;
+	static	HistorialUsuario h19;
+	static	HistorialUsuario h20;
 
 
 	@BeforeClass
@@ -136,56 +128,41 @@ public class TestConsultasDB {
 				//para los distintos tests
 				
 				//tipos
-				outdoor = new Tipo_Actividad("outdoor");
-				indoor = new Tipo_Actividad("indoor");
-				academico = new Tipo_Actividad("academico");
-				deporte = new Tipo_Actividad("deporte");
-				ocio = new Tipo_Actividad("ocio");
+				outdoor = new TipoActividad("outdoor");
+				indoor = new TipoActividad("indoor");
+				academico = new TipoActividad("academico");
+				deporte = new TipoActividad("deporte");
+				ocio = new TipoActividad("ocio");
 
-
-
+				//Tipos de Actividades
+				ArrayList<TipoActividad> ta1 = new ArrayList<TipoActividad>();
+				ta1.add(ocio);
+				ta1.add(outdoor);
+				ArrayList<TipoActividad> ta2 = new ArrayList<TipoActividad>();
+				ta2.add(ocio);
+				ta2.add(outdoor);
+				ta2.add(deporte);
+				ArrayList<TipoActividad> ta3 = new ArrayList<TipoActividad>();
+				ta3.add(indoor);
+				ArrayList<TipoActividad> ta4 = new ArrayList<TipoActividad>();
+				ta4.add(indoor);
+				ta4.add(academico);
+				ArrayList<TipoActividad> ta5 = new ArrayList<TipoActividad>();
+				ta5.add(ocio);
+				ta5.add(indoor);
+				
 				//actividades
-				a1 = new Actividad("Cazar Pokemon", new ArrayList<Tipo_Actividad>(){{
-					add(ocio);
-					add(outdoor);
-				}});
-				a2 = new Actividad("Comer Helado", new ArrayList<Tipo_Actividad>(){{
-					add(ocio);
-					add(outdoor);
-				}});
-				a3 = new Actividad("Jugar al futbol", new ArrayList<Tipo_Actividad>(){{
-					add(ocio);
-					add(outdoor);
-					add(deporte);
-				}});
-				a4 = new Actividad("Trabajar", new ArrayList<Tipo_Actividad>(){{
-					add(indoor);
-				}});
-				a5 = new Actividad("Ir a cursar", new ArrayList<Tipo_Actividad>(){{
-					add(indoor);
-					add(academico);
-				}});
-				a6 = new Actividad("Comer facturas", new ArrayList<Tipo_Actividad>(){{
-					add(ocio);
-					add(indoor);
-				}});
-				a7 = new Actividad("Hacer el tpe de arqui", new ArrayList<Tipo_Actividad>(){{
-					add(indoor);
-					add(academico);
-				}});
-				a8 = new Actividad("Evoluciona pokemones", new ArrayList<Tipo_Actividad>(){{
-					add(ocio);
-					add(indoor);
-				}});
-				a9 = new Actividad("Ir al GYM", new ArrayList<Tipo_Actividad>(){{
-					add(ocio);
-					add(indoor);
-				}});
-				a10 = new Actividad("Correr", new ArrayList<Tipo_Actividad>(){{
-					add(ocio);
-					add(outdoor);
-					add(deporte);
-				}});
+				a1 = new Actividad("Cazar Pokemon", ta1);
+				a2 = new Actividad("Comer Helado", ta1);
+				a3 = new Actividad("Jugar al futbol", ta2);
+				a4 = new Actividad("Trabajar", ta3);
+				a5 = new Actividad("Ir a cursar", ta4);
+				a6 = new Actividad("Comer facturas", ta5);
+				a7 = new Actividad("Hacer el tpe de arqui", ta4);
+				a8 = new Actividad("Evoluciona pokemones", ta5);
+				a9 = new Actividad("Ir al GYM", ta5);
+				a10 = new Actividad("Correr", ta2);
+				
 				actividades = new ArrayList<Actividad>();
 				actividades.add(a1);
 				actividades.add(a2);
@@ -201,86 +178,86 @@ public class TestConsultasDB {
 
 
 				//actividades realizadas
-				ar1 = new Actividad_Realizada(a1, new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar2 = new Actividad_Realizada(a1, new GregorianCalendar(2016,5,23,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar3 = new Actividad_Realizada(a2, new GregorianCalendar(2016,6,15,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar4 = new Actividad_Realizada(a2, new GregorianCalendar(2016,5,20,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar5 = new Actividad_Realizada(a3, new GregorianCalendar(2016,7,23,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar6 = new Actividad_Realizada(a3, new GregorianCalendar(2016,1,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar7 = new Actividad_Realizada(a4, new GregorianCalendar(2016,9,3,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar8 = new Actividad_Realizada(a4, new GregorianCalendar(2016,10,13,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar9 = new Actividad_Realizada(a5, new GregorianCalendar(2016,4,30,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar10 = new Actividad_Realizada(a5, new GregorianCalendar(2016,8,3,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar11 = new Actividad_Realizada(a6, new GregorianCalendar(2016,3,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar12 = new Actividad_Realizada(a6, new GregorianCalendar(2016,9,4,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar13 = new Actividad_Realizada(a7, new GregorianCalendar(2016,9,6,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar14 = new Actividad_Realizada(a7, new GregorianCalendar(2016,2,3,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar15 = new Actividad_Realizada(a8, new GregorianCalendar(2016,7,31,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar16 = new Actividad_Realizada(a8, new GregorianCalendar(2016,2,4,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar17 = new Actividad_Realizada(a9, new GregorianCalendar(2016,11,19,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar18 = new Actividad_Realizada(a9, new GregorianCalendar(2016,0,6,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar19 = new Actividad_Realizada(a10, new GregorianCalendar(2016,2,28,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
-				ar20 = new Actividad_Realizada(a10, new GregorianCalendar(2016,6,24,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar1 = new ActividadRealizada(a1, new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar2 = new ActividadRealizada(a1, new GregorianCalendar(2016,5,23,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar3 = new ActividadRealizada(a2, new GregorianCalendar(2016,6,15,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar4 = new ActividadRealizada(a2, new GregorianCalendar(2016,5,20,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar5 = new ActividadRealizada(a3, new GregorianCalendar(2016,7,23,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar6 = new ActividadRealizada(a3, new GregorianCalendar(2016,1,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar7 = new ActividadRealizada(a4, new GregorianCalendar(2016,9,3,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar8 = new ActividadRealizada(a4, new GregorianCalendar(2016,10,13,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar9 = new ActividadRealizada(a5, new GregorianCalendar(2016,4,30,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar10 = new ActividadRealizada(a5, new GregorianCalendar(2016,8,3,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar11 = new ActividadRealizada(a6, new GregorianCalendar(2016,3,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar12 = new ActividadRealizada(a6, new GregorianCalendar(2016,9,4,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar13 = new ActividadRealizada(a7, new GregorianCalendar(2016,9,6,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar14 = new ActividadRealizada(a7, new GregorianCalendar(2016,2,3,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar15 = new ActividadRealizada(a8, new GregorianCalendar(2016,7,31,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar16 = new ActividadRealizada(a8, new GregorianCalendar(2016,2,4,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar17 = new ActividadRealizada(a9, new GregorianCalendar(2016,11,19,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar18 = new ActividadRealizada(a9, new GregorianCalendar(2016,0,6,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar19 = new ActividadRealizada(a10, new GregorianCalendar(2016,2,28,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
+				ar20 = new ActividadRealizada(a10, new GregorianCalendar(2016,6,24,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 
 				//historiales de usuario
-				h1 = new Historial_Usuario(tar, ar1);
+				h1 = new HistorialUsuario(tar, ar1);
 				h1.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h1.setNivelFelicidad(4);
-				h2 = new Historial_Usuario(tar, ar2);
+				h2 = new HistorialUsuario(tar, ar2);
 				h2.setFecha_fin(new GregorianCalendar(2016,1,6,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h2.setNivelFelicidad(3);
-				h3 = new Historial_Usuario(tar, ar3);
+				h3 = new HistorialUsuario(tar, ar3);
 				h3.setFecha_fin(new GregorianCalendar(2016,8,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h3.setNivelFelicidad(3);
-				h4 = new Historial_Usuario(tar, ar4);
+				h4 = new HistorialUsuario(tar, ar4);
 				h4.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h4.setNivelFelicidad(4);
-				h5 = new Historial_Usuario(tar, ar5);
+				h5 = new HistorialUsuario(tar, ar5);
 				h5.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h5.setNivelFelicidad(5);
-				h6 = new Historial_Usuario(tar, ar6);
+				h6 = new HistorialUsuario(tar, ar6);
 				h6.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h6.setNivelFelicidad(1);
-				h7 = new Historial_Usuario(tar, ar7);
+				h7 = new HistorialUsuario(tar, ar7);
 				h7.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h7.setNivelFelicidad(2);
-				h8 = new Historial_Usuario(tar, ar8);
+				h8 = new HistorialUsuario(tar, ar8);
 				h8.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h8.setNivelFelicidad(3);
-				h9 = new Historial_Usuario(tar, ar9);
+				h9 = new HistorialUsuario(tar, ar9);
 				h9.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h9.setNivelFelicidad(4);
-				h10 = new Historial_Usuario(tar, ar10);
+				h10 = new HistorialUsuario(tar, ar10);
 				h10.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h10.setNivelFelicidad(5);
-				h11 = new Historial_Usuario(tar, ar11);
+				h11 = new HistorialUsuario(tar, ar11);
 				h11.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h11.setNivelFelicidad(1);
-				h12 = new Historial_Usuario(tar, ar12);
+				h12 = new HistorialUsuario(tar, ar12);
 				h12.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h12.setNivelFelicidad(2);
-				h13 = new Historial_Usuario(tar, ar13);
+				h13 = new HistorialUsuario(tar, ar13);
 				h13.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h13.setNivelFelicidad(3);
-				h14 = new Historial_Usuario(tar, ar14);
+				h14 = new HistorialUsuario(tar, ar14);
 				h14.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h14.setNivelFelicidad(4);
-				h15 = new Historial_Usuario(tar, ar15);
+				h15 = new HistorialUsuario(tar, ar15);
 				h15.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h15.setNivelFelicidad(5);
-				h16 = new Historial_Usuario(tar, ar16);
+				h16 = new HistorialUsuario(tar, ar16);
 				h16.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h16.setNivelFelicidad(1);
-				h17 = new Historial_Usuario(tar, ar17);
+				h17 = new HistorialUsuario(tar, ar17);
 				h17.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h17.setNivelFelicidad(2);
-				h18 = new Historial_Usuario(tar, ar18);
+				h18 = new HistorialUsuario(tar, ar18);
 				h18.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h18.setNivelFelicidad(3);
-				h19 = new Historial_Usuario(tar, ar19);
+				h19 = new HistorialUsuario(tar, ar19);
 				h19.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h19.setNivelFelicidad(4);
-				h20 = new Historial_Usuario(tar, ar20);
+				h20 = new HistorialUsuario(tar, ar20);
 				h20.setFecha_fin(new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
 				h20.setNivelFelicidad(5);
 				
@@ -288,28 +265,28 @@ public class TestConsultasDB {
 				max = 5;
 				avg = 3.2;
 				
-				actividadesEntreFechas = new ArrayList<Actividad_Realizada>();
+				actividadesEntreFechas = new ArrayList<ActividadRealizada>();
 				actividadesEntreFechas.add(ar2);
 		}
 	
 	@Test
 	public void ListarUsuarios(){
-		assertEquals(usuarios, s.ListarUsuarios());
+		assertEquals(usuarios, s.listarUsuarios());
 	}
 	
 	@Test
 	public void Listar_Actividades(){
-		assertEquals(actividades, s.Listar_Actividades());
+		assertEquals(actividades, s.listarActividades());
 	}
 	
 	@Test
 	public void ListarActividadesEntreFechas(){
-		assertEquals(actividadesEntreFechas, s.ListarActividadesEntreFechas());
+		assertEquals(actividadesEntreFechas, s.listarActividadesEntreFechas());
 	}
 	
 	@Test
 	public void ObtenerEstadisticas(){
-		ArrayList<Object[]> resultados = s.ObtenerEstadisticas();
+		ArrayList<Object[]> resultados = s.obtenerEstadisticas();
 		assertEquals((Double)resultados.get(0)[0], avg,1e-6);
 		assertEquals((Double)resultados.get(0)[1], min,1e-6);
 		assertEquals((Double)resultados.get(0)[2], max,1e-6);
@@ -319,7 +296,7 @@ public class TestConsultasDB {
 	@AfterClass
 	public static void cerrarFactoryYEliminarTablas(){
 		
-		s.EliminarDatosDB();
+		s.eliminarDatosDB();
 		s.cerrarFactory();
 	}
 

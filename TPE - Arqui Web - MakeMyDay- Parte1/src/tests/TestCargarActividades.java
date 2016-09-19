@@ -1,9 +1,6 @@
 package tests;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -11,22 +8,25 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import org.junit.*;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import entidades.Actividad;
-import entidades.Tipo_Actividad;
-import entidades.Usuario;
+import entidades.TipoActividad;
 
 public class TestCargarActividades {
 
 	private static EntityManagerFactory emfactory;
 	private static EntityManager emanager;
 	
-	static Tipo_Actividad outdoor;
-	static Tipo_Actividad indoor;
-	static Tipo_Actividad academico;
-	static Tipo_Actividad deporte;
-	static Tipo_Actividad ocio;
+	static TipoActividad outdoor;
+	static TipoActividad indoor;
+	static TipoActividad academico;
+	static TipoActividad deporte;
+	static TipoActividad ocio;
 	
 	static Actividad a1;
 	static Actividad a2;
@@ -57,7 +57,7 @@ public class TestCargarActividades {
 		emanager = emfactory.createEntityManager();
 		String jpql = "SELECT t FROM Tipo_Actividad t"; 
 		Query query = emanager.createQuery(jpql); 
-		List<Tipo_Actividad> resultados = query.getResultList();
+		List<TipoActividad> resultados = query.getResultList();
 		
 		outdoor = resultados.get(0);
 		indoor = resultados.get(1);
@@ -65,48 +65,34 @@ public class TestCargarActividades {
 		deporte = resultados.get(3);
 		ocio = resultados.get(4);
 		
+		//Tipos de Actividades
+		ArrayList<TipoActividad> ta1 = new ArrayList<TipoActividad>();
+		ta1.add(ocio);
+		ta1.add(outdoor);
+		ArrayList<TipoActividad> ta2 = new ArrayList<TipoActividad>();
+		ta2.add(ocio);
+		ta2.add(outdoor);
+		ta2.add(deporte);
+		ArrayList<TipoActividad> ta3 = new ArrayList<TipoActividad>();
+		ta3.add(indoor);
+		ArrayList<TipoActividad> ta4 = new ArrayList<TipoActividad>();
+		ta4.add(indoor);
+		ta4.add(academico);
+		ArrayList<TipoActividad> ta5 = new ArrayList<TipoActividad>();
+		ta5.add(ocio);
+		ta5.add(indoor);
+		
 		//actividades
-		a1 = new Actividad("Cazar Pokemon", new ArrayList<Tipo_Actividad>(){{
-			add(ocio);
-			add(outdoor);
-		}});
-		a2 = new Actividad("Comer Helado", new ArrayList<Tipo_Actividad>(){{
-			add(ocio);
-			add(outdoor);
-		}});
-		a3 = new Actividad("Jugar al futbol", new ArrayList<Tipo_Actividad>(){{
-			add(ocio);
-			add(outdoor);
-			add(deporte);
-		}});
-		a4 = new Actividad("Trabajar", new ArrayList<Tipo_Actividad>(){{
-			add(indoor);
-		}});
-		a5 = new Actividad("Ir a cursar", new ArrayList<Tipo_Actividad>(){{
-			add(indoor);
-			add(academico);
-		}});
-		a6 = new Actividad("Comer facturas", new ArrayList<Tipo_Actividad>(){{
-			add(ocio);
-			add(indoor);
-		}});
-		a7 = new Actividad("Hacer el tpe de arqui", new ArrayList<Tipo_Actividad>(){{
-			add(indoor);
-			add(academico);
-		}});
-		a8 = new Actividad("Evoluciona pokemones", new ArrayList<Tipo_Actividad>(){{
-			add(ocio);
-			add(indoor);
-		}});
-		a9 = new Actividad("Ir al GYM", new ArrayList<Tipo_Actividad>(){{
-			add(ocio);
-			add(indoor);
-		}});
-		a10 = new Actividad("Correr", new ArrayList<Tipo_Actividad>(){{
-			add(ocio);
-			add(outdoor);
-			add(deporte);
-		}});
+		a1 = new Actividad("Cazar Pokemon", ta1);
+		a2 = new Actividad("Comer Helado", ta1);
+		a3 = new Actividad("Jugar al futbol", ta2);
+		a4 = new Actividad("Trabajar", ta3);
+		a5 = new Actividad("Ir a cursar", ta4);
+		a6 = new Actividad("Comer facturas", ta5);
+		a7 = new Actividad("Hacer el tpe de arqui", ta4);
+		a8 = new Actividad("Evoluciona pokemones", ta5);
+		a9 = new Actividad("Ir al GYM", ta5);
+		a10 = new Actividad("Correr", ta2);
 	}
 	
 	@Test

@@ -10,18 +10,18 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import entidades.Tipo_Actividad;
+import entidades.TipoActividad;
 
 public class TestCargarTipoActividades {
 
 	private static EntityManagerFactory emfactory;
 	private EntityManager emanager;
 	
-	static Tipo_Actividad outdoor;
-	static Tipo_Actividad indoor;
-	static Tipo_Actividad academico;
-	static Tipo_Actividad deporte;
-	static Tipo_Actividad ocio;
+	static TipoActividad outdoor;
+	static TipoActividad indoor;
+	static TipoActividad academico;
+	static TipoActividad deporte;
+	static TipoActividad ocio;
 
 	
 	
@@ -39,11 +39,11 @@ public class TestCargarTipoActividades {
 	@BeforeClass
 	public static void init(){
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
-		outdoor = new Tipo_Actividad("outdoor");
-		indoor = new Tipo_Actividad("indoor");
-		academico = new Tipo_Actividad("academico");
-		deporte = new Tipo_Actividad("deporte");
-		ocio = new Tipo_Actividad("ocio");
+		outdoor = new TipoActividad("outdoor");
+		indoor = new TipoActividad("indoor");
+		academico = new TipoActividad("academico");
+		deporte = new TipoActividad("deporte");
+		ocio = new TipoActividad("ocio");
 	}
 	
 	

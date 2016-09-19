@@ -1,8 +1,8 @@
 package entidades;
 
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,11 +10,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Historial_Usuario {
+@Table(name = "Historial_Usuario")
+/**
+ * Creará las instancias de los historiales cuando un usuario haya finalizado una actividad
+ * y quiera darle un valor de felicidad
+ * 
+ * @author Gonzales Victor Juan, Rodriguez Joaquin, Nosei Santiago
+ *
+ */
+public class HistorialUsuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -23,7 +32,7 @@ public class Historial_Usuario {
 	private Usuario usuario;
 	@ManyToOne
 	@JoinColumn
-	private Actividad_Realizada actividad;
+	private ActividadRealizada actividad;
 	@Column(nullable = false)
 	private double nivelFelicidad;
 	@Column(nullable = false)
@@ -32,11 +41,19 @@ public class Historial_Usuario {
 	@Temporal(TemporalType.TIMESTAMP)
 	private GregorianCalendar fecha_fin;
 	
-	public Historial_Usuario() {
+	/**
+	 * Constructor de clase por defecto
+	 */
+	public HistorialUsuario() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Historial_Usuario(Usuario usuario, Actividad_Realizada actividad) {
+	/**
+	 * Constructor de clase con parametros para instanciar los historiales
+	 * @param usuario Sera el usuario el cual realizo la actividad y la finalizo
+	 * @param actividad Sera la actividad que realizo el usuario
+	 */
+	public HistorialUsuario(Usuario usuario, ActividadRealizada actividad) {
 		this.usuario = usuario;
 		this.actividad = actividad;
 		this.nivelFelicidad = 0.0;
@@ -51,7 +68,7 @@ public class Historial_Usuario {
 	public Usuario getUsuario() {
 		return usuario;
 	}
-	public Actividad_Realizada getActividad() {
+	public ActividadRealizada getActividad() {
 		return actividad;
 	}
 	public double getNivelFelicidad() {
@@ -76,9 +93,21 @@ public class Historial_Usuario {
 	@Override
 	public String toString() {
 		return "Historial_Usuario [id=" + id + ", usuario=" + usuario + ", actividad=" + actividad + ", nivelFelicidad="
-				+ nivelFelicidad + ", privado=" + privado + ", fecha_fin=" + fecha_fin + "]";
+				+ nivelFelicidad + ", privado=" + privado + ", fecha_fin=" + format(fecha_fin) + "]";
 	}
 
+	/**
+	 * Metodo auxiliar para darle formato dd/mmm/yyy hh:ss a las fechas creadas con Calendar
+	 * @param calendar Sera el calendario al que se le transforme al formato adecuado
+	 * @return
+	 */
+	private String format(GregorianCalendar calendar){
+	    SimpleDateFormat fmt = new SimpleDateFormat("dd/MMM/yyyy HH:mm:ss");
+	    fmt.setCalendar(calendar);
+	    String dateFormatted = fmt.format(calendar.getTime());
+	    return dateFormatted;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -87,7 +116,7 @@ public class Historial_Usuario {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Historial_Usuario other = (Historial_Usuario) obj;
+		HistorialUsuario other = (HistorialUsuario) obj;
 		if (actividad == null) {
 			if (other.actividad != null)
 				return false;

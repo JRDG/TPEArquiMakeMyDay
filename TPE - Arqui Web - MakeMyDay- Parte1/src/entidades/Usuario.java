@@ -3,13 +3,22 @@ package entidades;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Usuario")
+/**
+ * Creará las instancias de los usuarios con la informacion personal de los mismos
+ * 
+ * @author Gonzales Victor Juan, Rodriguez Joaquin, Nosei Santiago
+ *
+ */
 public class Usuario {
-
-
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,10 +34,21 @@ public class Usuario {
 	@Column(nullable = false)
 	private String password;
 
+	/**
+	 * Constructor de clase por defecto
+	 */
 	public Usuario() {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Constructor de clase con parametros para instanciar los usuarios
+	 * @param nombre
+	 * @param apellido
+	 * @param dNI
+	 * @param fechaNacimiento
+	 * @param password
+	 */
 	public Usuario(String nombre, String apellido, int dNI, GregorianCalendar fechaNacimiento, String password) {
 		this.nombre = nombre;
 		this.apellido = apellido;

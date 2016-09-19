@@ -3,14 +3,14 @@ package utils;
 public class Main {
 
 	public static void main(String[] args) {
-		ConsultasUtil s = ConsultasUtil.getInstance();
-		s.cargarDatosEnDB(); //Necesita tener descomentada la linea 36 del persistence 
-		s.Listar_Actividades();
-		s.ListarUsuarios();
-		s.ListarActividadesEntreFechas();
-		s.ObtenerEstadisticas();
-		s.EliminarDatosDB();
-		s.cerrarFactory();
+		ConsultasUtil consultas = ConsultasUtil.getInstance();
+		consultas.cargarDatosEnDB();
+		consultas.listarActividades();
+		consultas.listarUsuarios();
+		consultas.listarActividadesEntreFechas();
+		consultas.obtenerEstadisticas();
+		consultas.eliminarDatosDB();
+		consultas.cerrarFactory();
 	}
 
 }
