@@ -112,7 +112,6 @@ public class Servicios {
 		}	
 	}
 	
-	@SuppressWarnings("serial")
 	public void cargarDatosEnDB() {
 		try {
 			emanager = emfactory.createEntityManager();
@@ -135,53 +134,35 @@ public class Servicios {
 			Tipo_Actividad academico = new Tipo_Actividad("academico");
 			Tipo_Actividad deporte = new Tipo_Actividad("deporte");
 			Tipo_Actividad ocio = new Tipo_Actividad("ocio");
-
-
-
+			
+			//Tipos de Actividades
+			ArrayList<Tipo_Actividad> ta1 = new ArrayList<Tipo_Actividad>();
+			ta1.add(ocio);
+			ta1.add(outdoor);
+			ArrayList<Tipo_Actividad> ta2 = new ArrayList<Tipo_Actividad>();
+			ta2.add(ocio);
+			ta2.add(outdoor);
+			ta2.add(deporte);
+			ArrayList<Tipo_Actividad> ta3 = new ArrayList<Tipo_Actividad>();
+			ta3.add(indoor);
+			ArrayList<Tipo_Actividad> ta4 = new ArrayList<Tipo_Actividad>();
+			ta4.add(indoor);
+			ta4.add(academico);
+			ArrayList<Tipo_Actividad> ta5 = new ArrayList<Tipo_Actividad>();
+			ta5.add(ocio);
+			ta5.add(indoor);
+			
 			//actividades
-			Actividad a1 = new Actividad("Cazar Pokemon", new ArrayList<Tipo_Actividad>(){{
-				add(ocio);
-				add(outdoor);
-			}});
-			Actividad a2 = new Actividad("Comer Helado", new ArrayList<Tipo_Actividad>(){{
-				add(ocio);
-				add(outdoor);
-			}});
-			Actividad a3 = new Actividad("Jugar al futbol", new ArrayList<Tipo_Actividad>(){{
-				add(ocio);
-				add(outdoor);
-				add(deporte);
-			}});
-			Actividad a4 = new Actividad("Trabajar", new ArrayList<Tipo_Actividad>(){{
-				add(indoor);
-			}});
-			Actividad a5 = new Actividad("Ir a cursar", new ArrayList<Tipo_Actividad>(){{
-				add(indoor);
-				add(academico);
-			}});
-			Actividad a6 = new Actividad("Comer facturas", new ArrayList<Tipo_Actividad>(){{
-				add(ocio);
-				add(indoor);
-			}});
-			Actividad a7 = new Actividad("Hacer el tpe de arqui", new ArrayList<Tipo_Actividad>(){{
-				add(indoor);
-				add(academico);
-			}});
-			Actividad a8 = new Actividad("Evoluciona pokemones", new ArrayList<Tipo_Actividad>(){{
-				add(ocio);
-				add(indoor);
-			}});
-			Actividad a9 = new Actividad("Ir al GYM", new ArrayList<Tipo_Actividad>(){{
-				add(ocio);
-				add(indoor);
-			}});
-			Actividad a10 = new Actividad("Correr", new ArrayList<Tipo_Actividad>(){{
-				add(ocio);
-				add(outdoor);
-				add(deporte);
-			}});
-
-
+			Actividad a1 = new Actividad("Cazar Pokemon", ta1);
+			Actividad a2 = new Actividad("Comer Helado", ta1);
+			Actividad a3 = new Actividad("Jugar al futbol", ta2);
+			Actividad a4 = new Actividad("Trabajar", ta3);
+			Actividad a5 = new Actividad("Ir a cursar", ta4);
+			Actividad a6 = new Actividad("Comer facturas", ta5);
+			Actividad a7 = new Actividad("Hacer el tpe de arqui", ta4);
+			Actividad a8 = new Actividad("Evoluciona pokemones", ta5);
+			Actividad a9 = new Actividad("Ir al GYM", ta5);
+			Actividad a10 = new Actividad("Correr", ta2);
 
 			//actividades realizadas
 			Actividad_Realizada ar1 = new Actividad_Realizada(a1, new GregorianCalendar(2016,7,2,Calendar.HOUR,Calendar.MINUTE,Calendar.SECOND));
