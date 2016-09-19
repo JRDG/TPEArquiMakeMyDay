@@ -16,25 +16,25 @@ import entidades.Historial_Usuario;
 import entidades.Tipo_Actividad;
 import entidades.Usuario;
 
-public class Servicios {
+public class ConsultasUtil {
 
 	private EntityManagerFactory emfactory;
 	private EntityManager emanager;
-	private static Servicios s; 
+	private static ConsultasUtil s; 
 	
-	private Servicios(){
+	private ConsultasUtil(){
 		emfactory = null;
 		emanager = null;
 		inicializarFactory();
 	}
 	
-	public static Servicios getInstance(){
+	public static ConsultasUtil getInstance(){
 		if(s==null)
-			s = new Servicios();
+			s = new ConsultasUtil();
 		return s;
 	}
 
-	public void inicializarFactory(){
+	private void inicializarFactory(){
 		try {
 			emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 		} catch (Exception e) {
@@ -48,7 +48,8 @@ public class Servicios {
 		}	
 	}
 	
-	public void ListarActividadesEntreFechas(){
+	public ArrayList<Actividad_Realizada> ListarActividadesEntreFechas(){
+		ArrayList<Actividad_Realizada> resultados = new ArrayList<>();
 		try{
 			emanager = emfactory.createEntityManager();
 			String usuario = "tar";
@@ -56,24 +57,26 @@ public class Servicios {
 			Calendar fecha2 = new GregorianCalendar(2016,4,30);
 			String jpql = "SELECT h.actividad FROM Historial_Usuario h WHERE h.usuario.nombre = ?1 AND (h.actividad.fecha_realizada > ?2 AND h.fecha_fin < ?3)"; 
 			Query query = emanager.createQuery(jpql).setParameter(1, usuario).setParameter(2,fecha1).setParameter(3,fecha2); 
-			List<Actividad_Realizada> resultados = query.getResultList();
+			resultados.addAll(query.getResultList());
 			for(Actividad_Realizada  r : resultados) { 
 				System.out.println(r);
-			} 
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		if (emanager != null){
 			emanager.close();
 		}	
+		return resultados;
 	}
 	
-	public void Listar_Actividades(){
+	public ArrayList<Actividad> Listar_Actividades(){
+		ArrayList<Actividad> resultados = new ArrayList<>();
 		try{
 			emanager = emfactory.createEntityManager();
 			String jpql = "SELECT a FROM Actividad a"; 
 			Query query = emanager.createQuery(jpql); 
-			List<Actividad> resultados = query.getResultList();
+			resultados.addAll(query.getResultList());
 			for(Actividad  r : resultados) { 
 				System.out.println(r.toString());
 			} 
@@ -83,14 +86,16 @@ public class Servicios {
 		if (emanager != null){
 			emanager.close();
 		}
+		return resultados;
 	}
 	
-	public void ListarUsuarios(){
+	public ArrayList<Usuario> ListarUsuarios(){
+		ArrayList<Usuario> resultados = new ArrayList<>();
 		try{
 			emanager = emfactory.createEntityManager();
 			String jpql = "SELECT u FROM Usuario u"; 
 			Query query = emanager.createQuery(jpql); 
-			List<Usuario> resultados = query.getResultList();
+			resultados.addAll(query.getResultList());
 			for(Usuario  u : resultados) { 
 				System.out.println(u.toString());    
 			} 
@@ -100,14 +105,16 @@ public class Servicios {
 		if (emanager != null){
 			emanager.close();
 		}		
+		return resultados;
 	}
 	
-	public void ObtenerEstadisticas(){
+	public ArrayList<Object[]> ObtenerEstadisticas(){
+		ArrayList<Object[]> resultados = new ArrayList<Object[]>();
 		try{
 			emanager = emfactory.createEntityManager();
 			String jpql = "SELECT AVG(h.nivelFelicidad), MIN(h.nivelFelicidad), MAX(h.nivelFelicidad) FROM Historial_Usuario h WHERE h.usuario.DNI LIKE ?1"; 
 			Query query = emanager.createQuery(jpql).setParameter(1, 3); 
-			List<Object[]> resultados = query.getResultList();
+			resultados.addAll(query.getResultList());
 			System.out.println("Estadisticas del Usuario");
 			System.out.println("Promedio: " + (Double) resultados.get(0)[0]);
 			System.out.println("Minimo: " + (Double) resultados.get(0)[1]);
@@ -118,8 +125,10 @@ public class Servicios {
 		if (emanager != null){
 			emanager.close();
 		}	
+		return resultados;
 	}
 	
+	//usado en el main
 	public void cargarDatosEnDB() {
 		try {
 			emanager = emfactory.createEntityManager();
