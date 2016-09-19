@@ -23,13 +23,10 @@ import entidades.Actividad_Realizada;
 import entidades.Historial_Usuario;
 import entidades.Tipo_Actividad;
 import entidades.Usuario;
-import utils.Servicios;
+import utils.ConsultasUtil;
 
 public class TestConsultasDB {
-
-	private static EntityManagerFactory emfactory;
-	private static EntityManager emanager;
-	
+	static ConsultasUtil s;
 	static 	ArrayList usuarios;
 	static 	ArrayList actividades;
 	static 	ArrayList estadisticas;
@@ -109,23 +106,10 @@ public class TestConsultasDB {
 	static	Historial_Usuario h19;
 	static	Historial_Usuario h20;
 
-	
-//	@Before
-//	public void Before(){
-//		emanager = emfactory.createEntityManager();
-//		System.out.println("Beforeeeeee");
-//	}
-//	@After
-//	public void After(){
-//		if (emanager != null){
-//			emanager.close();
-//			System.out.println("Afterrrrrrr");
-//		}	
-//	}
 
 	@BeforeClass
 	public static void inicializacion(){
-		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
+				s = ConsultasUtil.getInstance();
 		
 				//usuarios
 				joa = new Usuario("Joa","Quin",35647897,new GregorianCalendar(1994,7,25) ,"2567");
@@ -310,50 +294,22 @@ public class TestConsultasDB {
 	
 	@Test
 	public void ListarUsuarios(){
-		System.out.println("ListarUsuarios");
-		emanager = emfactory.createEntityManager();
-		emanager.getTransaction().begin();
-		String jpql = "SELECT u FROM Usuario u"; 
-		Query query = emanager.createQuery(jpql); 
-		List<Usuario> resultados = query.getResultList();
-		assertEquals(usuarios, resultados);
+		assertEquals(usuarios, s.ListarUsuarios());
 	}
 	
 	@Test
 	public void Listar_Actividades(){
-		System.out.println("Listar_Actividades");
-		emanager = emfactory.createEntityManager();
-		emanager.getTransaction().begin();
-		String jpql = "SELECT a FROM Actividad a"; 
-		Query query = emanager.createQuery(jpql); 
-		List<Actividad> resultados = query.getResultList();
-		System.out.println(resultados.size());
-		assertEquals(actividades, resultados);
+		assertEquals(actividades, s.Listar_Actividades());
 	}
 	
 	@Test
 	public void ListarActividadesEntreFechas(){
-		System.out.println("ListarActividadesEntreFechas");
-		emanager = emfactory.createEntityManager();
-		emanager.getTransaction().begin();
-		String usuario = "tar";
-		Calendar fecha1 = new GregorianCalendar(2015,7,1);
-		Calendar fecha2 = new GregorianCalendar(2016,4,30);
-		String jpql = "SELECT h.actividad FROM Historial_Usuario h WHERE h.usuario.nombre = ?1 AND (h.actividad.fecha_realizada > ?2 AND h.fecha_fin < ?3)"; 
-		Query query = emanager.createQuery(jpql).setParameter(1, usuario).setParameter(2,fecha1).setParameter(3,fecha2); 
-		List<Actividad_Realizada> resultados = query.getResultList();
-		assertEquals(actividadesEntreFechas, resultados);
+		assertEquals(actividadesEntreFechas, s.ListarActividadesEntreFechas());
 	}
 	
 	@Test
 	public void ObtenerEstadisticas(){
-		System.out.println("ObtenerEstadisticas");
-		emanager = emfactory.createEntityManager();
-		emanager.getTransaction().begin();
-		String jpql = "SELECT AVG(h.nivelFelicidad), MIN(h.nivelFelicidad), MAX(h.nivelFelicidad) FROM Historial_Usuario h WHERE h.usuario.DNI LIKE ?1"; 
-		Query query = emanager.createQuery(jpql).setParameter(1, 3); 
-		List<Object[]> resultados = query.getResultList();
-		
+		ArrayList<Object[]> resultados = s.ObtenerEstadisticas();
 		assertEquals((Double)resultados.get(0)[0], avg,1e-6);
 		assertEquals((Double)resultados.get(0)[1], min,1e-6);
 		assertEquals((Double)resultados.get(0)[2], max,1e-6);
@@ -362,33 +318,9 @@ public class TestConsultasDB {
 	
 	@AfterClass
 	public static void cerrarFactoryYEliminarTablas(){
-		emanager = emfactory.createEntityManager();
-		emanager.getTransaction().begin();
-		String jpql1 = "SELECT CONCAT('alter table ',table_name,' drop foreign key ', constraint_name,';') FROM information_schema.key_column_usage WHERE table_schema = 'makemyday' and not (constraint_name like 'primary');";
-		String jpql2 = "SELECT CONCAT('drop table ',table_name,'; ') FROM information_schema.tables WHERE table_schema = 'makemyday';"; 		    
-	 
-		Query q1 = emanager.createNativeQuery(jpql1);
-		Query q2 = emanager.createNativeQuery(jpql2); 
-    
-		List<String> rFK = q1.getResultList();
-		List<String> rT = q2.getResultList();
-
-		System.out.println(rFK);
-		System.out.println("");
-		System.out.println(rT);
-		    
-		for(String  r : rFK) { 
-			Query qAux = emanager.createNativeQuery(r);  
-			qAux.executeUpdate();
-		}
-		for(String  r : rT) { 
-		Query qAux = emanager.createNativeQuery(r);  
-			qAux.executeUpdate();
-		}
-		if (emfactory != null){
-			emfactory.close();
-		}
 		
+		s.EliminarDatosDB();
+		s.cerrarFactory();
 	}
 
 }
