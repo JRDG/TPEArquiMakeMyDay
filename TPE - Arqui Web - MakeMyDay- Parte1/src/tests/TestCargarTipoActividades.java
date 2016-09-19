@@ -1,16 +1,14 @@
 package tests;
 
-import static org.junit.Assert.*;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.junit.Test;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 import entidades.Tipo_Actividad;
 
@@ -41,7 +39,6 @@ public class TestCargarTipoActividades {
 	@BeforeClass
 	public static void init(){
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
-		
 		outdoor = new Tipo_Actividad("outdoor");
 		indoor = new Tipo_Actividad("indoor");
 		academico = new Tipo_Actividad("academico");
@@ -52,7 +49,7 @@ public class TestCargarTipoActividades {
 	
 	@Test
 	public void test() {
-		emanager.getTransaction().begin();		
+		emanager.getTransaction().begin();
 		emanager.persist(outdoor);
 		emanager.persist(indoor);
 		emanager.persist(academico);
