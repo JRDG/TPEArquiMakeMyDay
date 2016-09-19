@@ -20,10 +20,18 @@ public class Servicios {
 
 	private EntityManagerFactory emfactory;
 	private EntityManager emanager;
+	private static Servicios s; 
 	
-	public Servicios(){
+	private Servicios(){
 		emfactory = null;
 		emanager = null;
+		inicializarFactory();
+	}
+	
+	public static Servicios getInstance(){
+		if(s==null)
+			s = new Servicios();
+		return s;
 	}
 
 	public void inicializarFactory(){
