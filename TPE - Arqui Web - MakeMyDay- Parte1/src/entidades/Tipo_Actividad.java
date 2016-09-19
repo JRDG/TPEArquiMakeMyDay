@@ -1,11 +1,10 @@
 package entidades;
 
-
 import javax.persistence.*;
 
 
 @Entity
-public class Tipo_Actividad {
+public class Tipo_Actividad implements Comparable<Tipo_Actividad> {
 	@Column(nullable=false)
 	private String nombre;
 	
@@ -48,6 +47,11 @@ public class Tipo_Actividad {
 		} else if (!nombre.equals(other.nombre))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Tipo_Actividad arg0) {
+		return this.getNombre().compareTo(arg0.getNombre());
 	}
 		
 	

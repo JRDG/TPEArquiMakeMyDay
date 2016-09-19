@@ -2,6 +2,7 @@ package entidades;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -28,7 +29,7 @@ public class Actividad {
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinColumn
-	private List<Tipo_Actividad> ListadeTipo;
+	private ArrayList<Tipo_Actividad> ListadeTipo;
 
 	public Actividad() {
 		ListadeTipo = new ArrayList<Tipo_Actividad>();
@@ -61,10 +62,16 @@ public class Actividad {
 		if (getClass() != obj.getClass())
 			return false;
 		Actividad other = (Actividad) obj;
+		System.out.println(obj.toString());
+		System.out.println(this.toString());
+		ArrayList<Tipo_Actividad> otra = new ArrayList<Tipo_Actividad>();
+		otra.addAll(other.getListadeTipo());
+		Collections.sort(otra);
+		Collections.sort(ListadeTipo);
 		if (ListadeTipo == null) {
-			if (other.ListadeTipo != null)
+			if (otra != null)
 				return false;
-		} else if (!ListadeTipo.equals(other.ListadeTipo))
+		} else if (!ListadeTipo.equals(otra))
 			return false;
 		if (nombre == null) {
 			if (other.nombre != null)
