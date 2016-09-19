@@ -69,7 +69,7 @@ public class TestCargarHistoriales {
 		List<Usuario> resultados = query.getResultList();
 		tar = resultados.get(0);
 		
-		List<ActividadRealizada> actividadesRelizadas = emanager.createQuery("SELECT ar FROM Actividad_Realizada ar").getResultList();
+		List<ActividadRealizada> actividadesRelizadas = emanager.createQuery("SELECT ar FROM ActividadRealizada ar").getResultList();
 
 		//historiales de usuario
 		h1 = new HistorialUsuario(tar, actividadesRelizadas.get(0));

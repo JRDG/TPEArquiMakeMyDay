@@ -270,32 +270,30 @@ public class TestConsultasDB {
 		}
 	
 	@Test
-	public void ListarUsuarios(){
+	public void listarUsuarios(){
 		assertEquals(usuarios, s.listarUsuarios());
 	}
 	
 	@Test
-	public void Listar_Actividades(){
+	public void listarActividades(){
 		assertEquals(actividades, s.listarActividades());
 	}
 	
 	@Test
-	public void ListarActividadesEntreFechas(){
+	public void listarActividadesEntreFechas(){
 		assertEquals(actividadesEntreFechas, s.listarActividadesEntreFechas());
 	}
 	
 	@Test
-	public void ObtenerEstadisticas(){
+	public void obtenerEstadisticas(){
 		ArrayList<Object[]> resultados = s.obtenerEstadisticas();
 		assertEquals((Double)resultados.get(0)[0], avg,1e-6);
 		assertEquals((Double)resultados.get(0)[1], min,1e-6);
 		assertEquals((Double)resultados.get(0)[2], max,1e-6);
 	}
 	
-	
 	@AfterClass
 	public static void cerrarFactoryYEliminarTablas(){
-		
 		s.eliminarDatosDB();
 		s.cerrarFactory();
 	}

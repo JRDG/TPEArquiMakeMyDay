@@ -79,7 +79,7 @@ public class ConsultasUtil {
 			String usuario = "tar";
 			Calendar fecha1 = new GregorianCalendar(2015,7,1);
 			Calendar fecha2 = new GregorianCalendar(2016,4,30);
-			String jpql = "SELECT h.actividad FROM Historial_Usuario h WHERE h.usuario.nombre = ?1 AND (h.actividad.fecha_realizada > ?2 AND h.fecha_fin < ?3)"; 
+			String jpql = "SELECT h.actividad FROM HistorialUsuario h WHERE h.usuario.nombre = ?1 AND (h.actividad.fecha_realizada > ?2 AND h.fecha_fin < ?3)"; 
 			Query query = emanager.createQuery(jpql).setParameter(1, usuario).setParameter(2,fecha1).setParameter(3,fecha2); 
 			resultados.addAll(query.getResultList());
 			for(ActividadRealizada  r : resultados) { 
@@ -148,7 +148,7 @@ public class ConsultasUtil {
 		ArrayList<Object[]> resultados = new ArrayList<Object[]>();
 		try{
 			emanager = emfactory.createEntityManager();
-			String jpql = "SELECT AVG(h.nivelFelicidad), MIN(h.nivelFelicidad), MAX(h.nivelFelicidad) FROM Historial_Usuario h WHERE h.usuario.DNI LIKE ?1"; 
+			String jpql = "SELECT AVG(h.nivelFelicidad), MIN(h.nivelFelicidad), MAX(h.nivelFelicidad) FROM HistorialUsuario h WHERE h.usuario.DNI LIKE ?1"; 
 			Query query = emanager.createQuery(jpql).setParameter(1, 3); 
 			resultados.addAll(query.getResultList());
 			System.out.println("Estadisticas del Usuario");

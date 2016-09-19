@@ -55,7 +55,7 @@ public class TestCargarActividades {
 	public static void inicializacion() {
 		emfactory = Persistence.createEntityManagerFactory("TPE-MakeMyDay-JPA");
 		emanager = emfactory.createEntityManager();
-		String jpql = "SELECT t FROM Tipo_Actividad t"; 
+		String jpql = "SELECT t FROM TipoActividad t"; 
 		Query query = emanager.createQuery(jpql); 
 		List<TipoActividad> resultados = query.getResultList();
 		
