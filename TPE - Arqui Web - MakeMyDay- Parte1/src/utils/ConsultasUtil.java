@@ -82,9 +82,11 @@ public class ConsultasUtil {
 			String jpql = "SELECT h.actividad FROM HistorialUsuario h WHERE h.usuario.nombre = ?1 AND (h.actividad.fecha_realizada > ?2 AND h.fecha_fin < ?3)"; 
 			Query query = emanager.createQuery(jpql).setParameter(1, usuario).setParameter(2,fecha1).setParameter(3,fecha2); 
 			resultados.addAll(query.getResultList());
+			System.out.println("\n --------------Actividades entre Fechas--------------");
 			for(ActividadRealizada  r : resultados) { 
-				System.out.println(r);
+				System.out.println(r.toString());
 			}
+			System.out.println();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -105,9 +107,11 @@ public class ConsultasUtil {
 			String jpql = "SELECT a FROM Actividad a"; 
 			Query query = emanager.createQuery(jpql); 
 			resultados.addAll(query.getResultList());
+			System.out.println("\n --------------Actividades--------------");
 			for(Actividad  r : resultados) { 
 				System.out.println(r.toString());
 			} 
+			System.out.println();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -128,9 +132,11 @@ public class ConsultasUtil {
 			String jpql = "SELECT u FROM Usuario u"; 
 			Query query = emanager.createQuery(jpql); 
 			resultados.addAll(query.getResultList());
+			System.out.println("\n --------------Usuarios--------------");
 			for(Usuario  u : resultados) { 
 				System.out.println(u.toString());    
 			} 
+			System.out.println();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -151,10 +157,11 @@ public class ConsultasUtil {
 			String jpql = "SELECT AVG(h.nivelFelicidad), MIN(h.nivelFelicidad), MAX(h.nivelFelicidad) FROM HistorialUsuario h WHERE h.usuario.DNI LIKE ?1"; 
 			Query query = emanager.createQuery(jpql).setParameter(1, 3); 
 			resultados.addAll(query.getResultList());
-			System.out.println("Estadisticas del Usuario");
+			System.out.println("\n ----------------Estadisticas del Usuario------------------");
 			System.out.println("Promedio: " + (Double) resultados.get(0)[0]);
 			System.out.println("Minimo: " + (Double) resultados.get(0)[1]);
 			System.out.println("Maximo: " + (Double) resultados.get(0)[2]);
+			System.out.println();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
