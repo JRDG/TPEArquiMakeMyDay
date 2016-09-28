@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Tipo_Actividad")
 /**
- * Creará las instancias de los tipos de actividad, siendo cada tipo una generalizacion de la actividad
+ * Crearï¿½ las instancias de los tipos de actividad, siendo cada tipo una generalizacion de la actividad
  * 
  * @author Gonzales Victor Juan, Rodriguez Joaquin, Nosei Santiago
  *
@@ -68,10 +68,11 @@ public class TipoActividad implements Comparable<TipoActividad> {
 		return true;
 	}
 
-	@Override
+
 	/**
 	 * Metodo que comparara dos tipos de actividad tomando en cuenta sus nombres
 	 */
+	@Override
 	public int compareTo(TipoActividad arg0) {
 		return this.getNombre().compareTo(arg0.getNombre());
 	}
