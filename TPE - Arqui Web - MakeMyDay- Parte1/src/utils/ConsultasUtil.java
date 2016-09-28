@@ -73,7 +73,7 @@ public class ConsultasUtil {
 	 * @return
 	 */
 	public ArrayList<ActividadRealizada> listarActividadesEntreFechas(){
-		ArrayList<ActividadRealizada> resultados = new ArrayList<>();
+		ArrayList<ActividadRealizada> resultados = new ArrayList<ActividadRealizada>();
 		try{
 			emanager = emfactory.createEntityManager();
 			String usuario = "tar";
@@ -101,7 +101,7 @@ public class ConsultasUtil {
 	 * @return
 	 */
 	public ArrayList<Actividad> listarActividades(){
-		ArrayList<Actividad> resultados = new ArrayList<>();
+		ArrayList<Actividad> resultados = new ArrayList<Actividad>();
 		try{
 			emanager = emfactory.createEntityManager();
 			String jpql = "SELECT a FROM Actividad a"; 
@@ -126,7 +126,7 @@ public class ConsultasUtil {
 	 * @return
 	 */
 	public ArrayList<Usuario> listarUsuarios(){
-		ArrayList<Usuario> resultados = new ArrayList<>();
+		ArrayList<Usuario> resultados = new ArrayList<Usuario>();
 		try{
 			emanager = emfactory.createEntityManager();
 			String jpql = "SELECT u FROM Usuario u"; 
