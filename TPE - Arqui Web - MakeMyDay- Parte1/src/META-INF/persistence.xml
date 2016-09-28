@@ -10,8 +10,8 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<!-- <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider> -->
 		
-		<class>entidades.ActividadRealizada</class>
 		<class>entidades.Actividad</class>
+		<class>entidades.ActividadRealizada</class>
 		<class>entidades.HistorialUsuario</class>
 		<class>entidades.TipoActividad</class>
 		<class>entidades.Usuario</class>		
