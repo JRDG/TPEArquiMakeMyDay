@@ -9,7 +9,7 @@ public class Main {
 		consultas.listarUsuarios();
 		consultas.listarActividadesEntreFechas();
 		consultas.obtenerEstadisticas();
-		consultas.eliminarDatosDB();
+		//consultas.eliminarDatosDB();
 		consultas.cerrarFactory();
 	}
 
