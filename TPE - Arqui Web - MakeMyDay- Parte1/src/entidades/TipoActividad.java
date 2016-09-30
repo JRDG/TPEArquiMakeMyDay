@@ -71,7 +71,6 @@ public class TipoActividad implements Comparable<TipoActividad> {
 	/**
 	 * Metodo que comparara dos tipos de actividad tomando en cuenta sus nombres
 	 */
-	@Override
 	public int compareTo(TipoActividad arg0) {
 		return this.getNombre().compareTo(arg0.getNombre());
 	}
