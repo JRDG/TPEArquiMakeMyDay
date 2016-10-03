@@ -14,7 +14,7 @@
 		<class>entidades.ActividadRealizada</class>
 		<class>entidades.HistorialUsuario</class>
 		<class>entidades.TipoActividad</class>
-		<class>entidades.Usuario</class>		
+		<class>entidades.Usuario</class>		 
 
 		<properties>
 			<!-- Propiedades de configuracion de JDBC para Apache Derby -->
