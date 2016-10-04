@@ -33,7 +33,8 @@ public class Usuario {
 	private GregorianCalendar fechaNacimiento;
 	@Column(nullable = false)
 	private String password;
-
+	
+	private boolean esValido;
 	/**
 	 * Constructor de clase por defecto
 	 */
@@ -55,6 +56,7 @@ public class Usuario {
 		DNI = dNI;
 		this.fechaNacimiento = fechaNacimiento;
 		this.password = password;
+		this.esValido= false;
 	}
 
 	public String getNombre() {
@@ -140,6 +142,11 @@ public class Usuario {
 		} else if (!password.equals(other.password))
 			return false;
 		return true;
+	}
+
+	public void setEsValido(boolean b) {
+		esValido = b;
+		
 	}	
 
 }
