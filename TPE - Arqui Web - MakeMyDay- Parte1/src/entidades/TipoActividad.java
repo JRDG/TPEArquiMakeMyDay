@@ -46,6 +46,14 @@ public class TipoActividad implements Comparable<TipoActividad> {
 		return idTipo;
 	}
 
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setId(int idTipo) {
+		this.idTipo = idTipo;
+	}
+
 	@Override
 	public String toString() {
 		return "Tipo_Actividad [nombre=" + nombre + ", idTipo=" + idTipo + "]";
