@@ -2,11 +2,14 @@ package recursos;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import entidades.Actividad;
 import entidades.TipoActividad;
@@ -31,6 +34,14 @@ public class RecursoTipoActividad {
 	public List<TipoActividad> getActividadById() {
 		List<TipoActividad> act = TipoActividadDAO.getInstance().findAll();
 		return act;
+	}
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response createTipo(TipoActividad t){
+		TipoActividadDAO.getInstance().persist(t);
+		return Response.status(201).entity(t).build();
 	}
 	
 }
