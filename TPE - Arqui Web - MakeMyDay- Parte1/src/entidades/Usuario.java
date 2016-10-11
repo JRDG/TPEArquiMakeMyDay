@@ -148,5 +148,7 @@ public class Usuario {
 		esValido = b;
 		
 	}	
-
+	public boolean esValido(){
+		return esValido;
+	}
 }
