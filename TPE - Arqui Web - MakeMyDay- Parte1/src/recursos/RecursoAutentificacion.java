@@ -28,7 +28,7 @@ public class RecursoAutentificacion {
 	    @Produces(MediaType.APPLICATION_JSON)
 	    @Consumes(MediaType.APPLICATION_JSON)
 	    public Response autenticarUser(Credencial credentials) {
-
+			System.out.println("coso");
 	        String username = credentials.getUsername();
 	        String password = credentials.getPassword();
 	        try {
