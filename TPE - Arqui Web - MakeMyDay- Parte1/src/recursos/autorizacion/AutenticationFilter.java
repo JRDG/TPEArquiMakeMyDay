@@ -16,7 +16,7 @@ import javax.ws.rs.ext.Provider;
 @Secured
 @Provider
 @Priority(Priorities.AUTHENTICATION)
-public class AutenticacionFilter implements ContainerRequestFilter {
+public class AutenticationFilter implements ContainerRequestFilter {
 	public void filter(ContainerRequestContext ctx) throws IOException {
 		String authHeader = ctx.getHeaderString(HttpHeaders.AUTHORIZATION);
 		if (authHeader == null) throw new NotAuthorizedException("Bearer");
