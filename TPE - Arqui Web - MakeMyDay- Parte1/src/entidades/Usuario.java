@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
 @Entity
 @Table(name = "Usuario")
@@ -33,7 +36,7 @@ public class Usuario {
 	private GregorianCalendar fechaNacimiento;
 	@Column(nullable = false)
 	private String password;
-	
+	@Transient
 	private boolean esValido;
 	/**
 	 * Constructor de clase por defecto
