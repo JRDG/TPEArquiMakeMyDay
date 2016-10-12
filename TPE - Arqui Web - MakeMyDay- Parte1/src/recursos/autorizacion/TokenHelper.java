@@ -30,7 +30,9 @@ public class TokenHelper {
 	public static String getUserName(String token){
 		return tokenMap.get(token);
 	}
-
+	public static String removeToken(String token){
+		return tokenMap.remove(token);
+	}
 	public static String generarToken(String userName){
 		long minutes = System.currentTimeMillis() / 1000 / 60;
 		String key = UUID.randomUUID().toString().toUpperCase() +
