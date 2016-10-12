@@ -6,7 +6,7 @@ import java.util.UUID;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 
 public class TokenHelper {
-	static long TIEMPO_TOKEN_MIN = 2;
+	static long TIEMPO_TOKEN_MIN = 10;
 	static Map<String,String> tokenMap = new HashMap<>(); 
 	public static void setToken(String token,String user){
 		tokenMap.put(token, user);
@@ -27,7 +27,7 @@ public class TokenHelper {
 		long minutes = System.currentTimeMillis() / 1000 / 60;
 		return ((minutes-Long.valueOf(strMinutos))< TokenHelper.TIEMPO_TOKEN_MIN);
 	}
-	static String  getUserName(String token){
+	public static String getUserName(String token){
 		return tokenMap.get(token);
 	}
 
