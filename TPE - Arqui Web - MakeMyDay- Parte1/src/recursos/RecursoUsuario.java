@@ -10,12 +10,14 @@ import javax.ws.rs.core.MediaType;
 
 import entidades.Usuario;
 import persistencia.UsuarioDAO;
+import recursos.autorizacion.Secured;
 
 
 
 @Path("/usuario")
 public class RecursoUsuario {
 	@GET
+	@Secured
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Usuario getActividadById(@PathParam("id") String msg) {
@@ -25,6 +27,7 @@ public class RecursoUsuario {
 	}
 	
 	@GET
+	@Secured
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Usuario> getActividadById() {
 		List<Usuario> act = UsuarioDAO.getInstance().findAll();
