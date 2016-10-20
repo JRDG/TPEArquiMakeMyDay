@@ -57,7 +57,6 @@ public class RecursoAutentificacion {
 	@POST
 	@Path("/logout")
 	@Secured
-	@Consumes(MediaType.APPLICATION_JSON)
 	public Response desautenticarUser(@HeaderParam("Authorization") String token) {
 		String user = TokenHelper.removeToken(parseToken(token));
 		Status response = Response.Status.OK;
