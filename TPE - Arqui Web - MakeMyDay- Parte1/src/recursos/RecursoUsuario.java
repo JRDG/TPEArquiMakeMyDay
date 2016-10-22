@@ -25,7 +25,7 @@ public class RecursoUsuario {
 	@GET
 	@Secured
 	@Produces(MediaType.APPLICATION_JSON)
-	public Usuario getActividadById() {
+	public Usuario getUsuario() {
 		System.out.println(securityContext.getUserPrincipal().getName());
 		Usuario u = UsuarioDAO.getInstance().findUsuarioByName(securityContext.getUserPrincipal().getName());
 		return u;
