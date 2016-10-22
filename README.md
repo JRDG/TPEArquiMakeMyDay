@@ -68,3 +68,11 @@ Logear actividades a un usuario (20 actividades con niveles de felicidad).
 Seleccionar actividades de un usuario en una franja de tiempo utilizando consultas JPQL.
 Obtener el mínimo, máximo y promedio de felicidad utilizando consultas JPQL.
 Eliminar todos los datos de la base de datos para realizar otro testeo.
+
+# Segunda entrega: 25 de octubre. A entregar: código fuente + despliegue + documentación
+Implementar servicios de Login/Logout
+Registración de usuarios
+Modificación de datos de usuario (requiere login)
+Consultar actividades de usuarios, dado un rango de fechas (requiere login)
+Documentar el diseño (contexto, sistema, modelo de datos, API).
+
