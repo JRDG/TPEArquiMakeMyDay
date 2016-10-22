@@ -2,27 +2,19 @@ package recursos;
 
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
 
-import com.sun.security.auth.UserPrincipal;
-
-import entidades.Actividad;
 import entidades.HistorialUsuario;
-import persistencia.ActividadDAO;
 import persistencia.HistorialUsuarioDAO;
-import persistencia.UsuarioDAO;
 import recursos.autorizacion.Secured;
-import utils.DatePair;
+import utils.ParFechas;
 
 @Path("/historial_usuario")
 public class RecursoHistorialUsuario {
@@ -43,7 +35,7 @@ public class RecursoHistorialUsuario {
 	@Secured
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public ArrayList<HistorialUsuario> getActividadesEntreFechas(DatePair datePair){
+	public ArrayList<HistorialUsuario> getActividadesEntreFechas(ParFechas datePair){
 		Principal up = securityContext.getUserPrincipal();
 		String userName = up.getName();
 		return HistorialUsuarioDAO.getInstance().buscarEntreFechas(userName,datePair.getFromDate(),datePair.getToDate());
