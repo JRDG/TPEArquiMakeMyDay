@@ -86,11 +86,11 @@ public class Usuario {
 		DNI = dNI;
 	}
 
-	public GregorianCalendar getCalendarNacimiento() {
+	public GregorianCalendar getFechaNacimiento() {
 		return fechaNacimiento; 
 	}
 
-	public void setEdad(GregorianCalendar fechaNacimiento) {
+	public void setFechaNacimiento(GregorianCalendar fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
@@ -106,7 +106,12 @@ public class Usuario {
 		return "Usuario [id_usuario=" + id_usuario + ", nombre=" + nombre + ", apellido=" + apellido + ", DNI=" + DNI
 				+ ", fechaNacimiento=" + getFechaNacimiento(fechaNacimiento)  + ", password=" + password + "]";
 	}
-
+	public int getId(){
+		return this.id_usuario;
+	}
+	public void setId(int id){
+		this.id_usuario = id;
+	}
 	private String getFechaNacimiento(GregorianCalendar fechaNacimiento2) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		sdf.setCalendar(fechaNacimiento2);
