@@ -2,7 +2,10 @@ package recursos;
 
 import java.util.List;
 
+import javax.ws.rs.ConstrainedTo;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -28,5 +31,12 @@ public class RecursoActividad {
 	public List<Actividad> getActividadById() {
 		List<Actividad> act = ActividadDAO.getInstance().findAll();
 		return act;
+	}
+	
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void createActividad(Actividad newAct){
+		ActividadDAO.getInstance().persist(newAct);
 	}
 }
