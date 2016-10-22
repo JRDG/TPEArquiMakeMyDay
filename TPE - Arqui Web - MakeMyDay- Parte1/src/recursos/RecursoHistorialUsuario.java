@@ -2,6 +2,7 @@ package recursos;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -19,6 +20,7 @@ import entidades.Actividad;
 import entidades.HistorialUsuario;
 import persistencia.ActividadDAO;
 import persistencia.HistorialUsuarioDAO;
+import persistencia.UsuarioDAO;
 import recursos.autorizacion.Secured;
 import utils.DatePair;
 
@@ -26,16 +28,16 @@ import utils.DatePair;
 public class RecursoHistorialUsuario {
 	@Context
 	SecurityContext securityContext;
-	
+	/*
 	@GET
-	@Path("/{id}")
+	@Secured
 	@Produces(MediaType.APPLICATION_JSON)
-	public Actividad getActividadById(@PathParam("id") String msg) {
-		int id = Integer.valueOf(msg);
-		Actividad act = ActividadDAO.getInstance().findById(id);
+	public List<Actividad> getActividades() {
+		List<Actividad> act = ActividadDAO.getInstance().findAll();
 		return act;
 
 	}
+	*/
 	
 	@POST
 	@Secured
