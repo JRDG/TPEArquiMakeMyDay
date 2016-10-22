@@ -1,10 +1,5 @@
 package recursos;
 
-import java.nio.charset.Charset;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.UUID;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
@@ -15,9 +10,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.SecurityContext;
-
-import org.glassfish.jersey.internal.util.Base64;
-import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 
 import entidades.Usuario;
 import persistencia.UsuarioDAO;
@@ -88,7 +80,6 @@ public class RecursoAutentificacion {
 		// JWT token)
 		// The issued token must be associated to a user
 		// Return the issued token
-
 		String token = TokenHelper.generarToken(userName);
 		TokenHelper.setToken(token, userName);
 		return token;
