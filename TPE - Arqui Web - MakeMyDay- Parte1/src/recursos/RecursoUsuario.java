@@ -27,8 +27,7 @@ public class RecursoUsuario {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Usuario getActividadById() {
 		System.out.println(securityContext.getUserPrincipal().getName());
-		int id = UsuarioDAO.getInstance().findIdByName(securityContext.getUserPrincipal().getName());
-		Usuario u = UsuarioDAO.getInstance().findById(id);
+		Usuario u = UsuarioDAO.getInstance().findUsuarioByName(securityContext.getUserPrincipal().getName());
 		return u;
 	}
 	
@@ -53,7 +52,7 @@ public class RecursoUsuario {
 	@Secured
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response actualizarUsuario(Usuario u){
-		int id = UsuarioDAO.getInstance().findIdByName(securityContext.getUserPrincipal().getName());
+		int id = UsuarioDAO.getInstance().findUsuarioByName(securityContext.getUserPrincipal().getName()).getId();
 		UsuarioDAO.getInstance().update(u,id);
 		return Response.status(Response.Status.OK).build();
 	}
