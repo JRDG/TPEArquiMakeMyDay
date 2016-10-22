@@ -51,17 +51,16 @@ public class UsuarioDAO extends BaseJPADAO<Usuario> {
 		uOriginal.setFechaNacimiento(u.getFechaNacimiento());
 		entityManager.getTransaction().commit();
 		entityManager.close();
-
 	}
 
-	public int findIdByName(String userName) {
+	public Usuario findUsuarioByName(String userName) {
 		EntityManager em = EntityManagerFactory.createEntityManager();
-		int id = -1;
+		Usuario userDB = null;
 		try {
-			String jpql = "SELECT u.id_usuario FROM Usuario u WHERE u.nombre = ?1";
+			String jpql = "SELECT u FROM Usuario u WHERE u.nombre = ?1";
 			Query query = em.createQuery(jpql, Usuario.class);
 			query.setParameter(1, userName);
-			id = (int) query.getSingleResult();
+			userDB = (Usuario) query.getSingleResult();
 		} catch (NoResultException e) {
 			System.out.println("no result");
 		} catch (Exception e) {
@@ -69,6 +68,6 @@ public class UsuarioDAO extends BaseJPADAO<Usuario> {
 		} finally {
 			em.close();
 		}
-		return id;
+		return userDB;
 	}
 }
