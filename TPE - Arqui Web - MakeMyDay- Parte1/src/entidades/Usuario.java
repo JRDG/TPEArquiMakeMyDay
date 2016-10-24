@@ -104,7 +104,7 @@ public class Usuario {
 
 	public String toString() {
 		return "Usuario [id_usuario=" + id_usuario + ", nombre=" + nombre + ", apellido=" + apellido + ", DNI=" + DNI
-				+ ", fechaNacimiento=" + getFechaNacimiento(fechaNacimiento)  + ", password=" + password + "]";
+				+ ", fechaNacimiento=" + formatDate(fechaNacimiento)  + ", password=" + password + "]";
 	}
 	public int getId(){
 		return this.id_usuario;
@@ -112,7 +112,7 @@ public class Usuario {
 	public void setId(int id){
 		this.id_usuario = id;
 	}
-	private String getFechaNacimiento(GregorianCalendar fechaNacimiento2) {
+	private String formatDate(GregorianCalendar fechaNacimiento2) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		sdf.setCalendar(fechaNacimiento2);
 		return sdf.format(fechaNacimiento2.getTime());

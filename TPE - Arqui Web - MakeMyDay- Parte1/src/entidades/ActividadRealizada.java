@@ -66,7 +66,7 @@ public class ActividadRealizada {
 	@Override
 	public String toString() {
 		return "Actividad_Realizada [actividad=" + actividad
-				+ ", fecha_realizada=" + format(fecha_realizada) + "]";
+				+ ", fecha_realizada=" + formatDate(fecha_realizada) + "]";
 	}
 	
 	/**
@@ -74,7 +74,7 @@ public class ActividadRealizada {
 	 * @param calendar Sera el calendario al que se le transforme al formato adecuado
 	 * @return
 	 */
-	private String format(GregorianCalendar calendar){
+	private String formatDate(GregorianCalendar calendar){
 	    SimpleDateFormat fmt = new SimpleDateFormat("dd/MMM/yyyy HH:mm:ss");
 	    fmt.setCalendar(calendar);
 	    String dateFormatted = fmt.format(calendar.getTime());

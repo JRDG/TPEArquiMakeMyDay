@@ -93,7 +93,7 @@ public class HistorialUsuario {
 	@Override
 	public String toString() {
 		return "Historial_Usuario [id=" + id + ", usuario=" + usuario + ", actividad=" + actividad + ", nivelFelicidad="
-				+ nivelFelicidad + ", privado=" + privado + ", fecha_fin=" + format(fecha_fin) + "]";
+				+ nivelFelicidad + ", privado=" + privado + ", fecha_fin=" + formatDate(fecha_fin) + "]";
 	}
 
 	/**
@@ -101,7 +101,7 @@ public class HistorialUsuario {
 	 * @param calendar Sera el calendario al que se le transforme al formato adecuado
 	 * @return
 	 */
-	private String format(GregorianCalendar calendar){
+	private String formatDate(GregorianCalendar calendar){
 	    SimpleDateFormat fmt = new SimpleDateFormat("dd/MMM/yyyy HH:mm:ss");
 	    fmt.setCalendar(calendar);
 	    String dateFormatted = fmt.format(calendar.getTime());
