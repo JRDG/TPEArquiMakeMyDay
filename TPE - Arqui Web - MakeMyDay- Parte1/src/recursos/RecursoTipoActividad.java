@@ -11,9 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import entidades.Actividad;
 import entidades.TipoActividad;
-import persistencia.ActividadDAO;
 import persistencia.TipoActividadDAO;
 
 @Path("/tipo_actividad")
