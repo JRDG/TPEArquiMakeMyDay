@@ -24,7 +24,7 @@ public class RecursoAutentificacion {
 
 	@POST
 	@Path("/login")
-	@Produces(MediaType.APPLICATION_JSON)
+	//@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response autenticarUser(Credencial credentials) {
 		String username = credentials.getUsername();
