@@ -20,17 +20,7 @@ import utils.ParFechas;
 public class RecursoHistorialUsuario {
 	@Context
 	SecurityContext securityContext;
-	/*
-	@GET
-	@Secured
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Actividad> getActividades() {
-		List<Actividad> act = ActividadDAO.getInstance().findAll();
-		return act;
 
-	}
-	*/
-	
 	@POST
 	@Secured
 	@Produces(MediaType.APPLICATION_JSON)
