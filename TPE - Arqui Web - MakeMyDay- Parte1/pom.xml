@@ -7,11 +7,6 @@
 	<name>TPE - Arqui Web - MakeMyDay</name>
 	<dependencies>
 
-		<!-- <dependency> -->
-		<!-- <groupId>org.glassfish.jersey.core</groupId> -->
-		<!-- <artifactId>jersey-server</artifactId> -->
-		<!-- <version>2.23.2</version> -->
-		<!-- </dependency> -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -36,13 +31,6 @@
 			<version>1.9.2</version>
 		</dependency>
 
-
-		<!-- <dependency> -->
-		<!-- <groupId>org.hibernate</groupId> -->
-		<!-- <artifactId>hibernate-entitymanager</artifactId> -->
-		<!-- <version>5.2.1.Final</version> -->
-		<!-- </dependency> -->
-
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -55,31 +43,11 @@
 			<version>2.6.3</version>
 		</dependency>
 
-
-		<!-- <dependency> -->
-		<!-- <groupId>org.apache.openjpa</groupId> -->
-		<!-- <artifactId>openjpa-all</artifactId> -->
-		<!-- <version>2.4.1</version> -->
-		<!-- </dependency> -->
-
-		<!-- <dependency> -->
-		<!-- <groupId>org.apache.derby</groupId> -->
-		<!-- <artifactId>derby</artifactId> -->
-		<!-- <version>10.12.1.1</version> -->
-		<!-- </dependency> -->
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 		</dependency>
-
-		<!-- <dependency> -->
-		<!-- <groupId>org.glassfish.jersey.bundles</groupId> -->
-		<!-- <artifactId>jaxrs-ri</artifactId> -->
-		<!-- <version>2.0</version> -->
-		<!-- </dependency> -->
-
 
 	</dependencies>
 	<build>
