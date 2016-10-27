@@ -21,26 +21,7 @@ import recursos.autorizacion.Secured;
 public class RecursoUsuario {
 	@Context
 	SecurityContext securityContext;
-	
-	@GET
-	@Secured
-	@Produces(MediaType.APPLICATION_JSON)
-	public Usuario getUsuario() {
-		System.out.println(securityContext.getUserPrincipal().getName());
-		Usuario u = UsuarioDAO.getInstance().findUsuarioByName(securityContext.getUserPrincipal().getName());
-		return u;
-	}
-	
-	/*
-	@GET
-	//@Secured
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Usuario> getActividadById() {
-		List<Usuario> act = UsuarioDAO.getInstance().findAll();
-		return act;
-	}
-	*/
-	
+		
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response registrarUsuario(Usuario u){
