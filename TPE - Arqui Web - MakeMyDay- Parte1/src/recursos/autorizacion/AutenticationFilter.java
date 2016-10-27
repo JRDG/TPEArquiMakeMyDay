@@ -19,7 +19,7 @@ import javax.ws.rs.ext.Provider;
 public class AutenticationFilter implements ContainerRequestFilter {
 	public void filter(ContainerRequestContext ctx) throws IOException {
 		String authHeader = ctx.getHeaderString(HttpHeaders.AUTHORIZATION);
-		if (authHeader == null) throw new NotAuthorizedException("Bearer");
+		if (authHeader == null||authHeader.isEmpty()) throw new NotAuthorizedException("bad token");
 		// Extract the token from the HTTP Authorization header
 		String token = parseToken(authHeader);
 		if (verifyToken(token) == false) {
